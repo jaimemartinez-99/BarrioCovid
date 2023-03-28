@@ -1,0 +1,16 @@
+.catalogo {
+    font-size: 36px;
+    font-family: 'Libre Caslon Text', serif;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #000000;
+}
+
+#filtro {
+  margin-bottom: 24px;
+}
+#filtro::placeholder {
+    color: #999;
+    font-style: italic;
+    margin-left: 15px;
+  }
