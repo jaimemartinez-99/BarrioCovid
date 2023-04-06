@@ -10,9 +10,8 @@ export const mockdata = {
       "stock": 94,
       "brand": "Apple",
       "category": "smartphones",
-      "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
       "images": [
-        "https://dummyjson.com/image/i/products/1/1.jpg",
+        "https://imgur.com/a/vSRr0HM",
         "https://dummyjson.com/image/i/products/1/2.jpg",
         "https://dummyjson.com/image/i/products/1/3.jpg",
         "https://dummyjson.com/image/i/products/1/4.jpg",
