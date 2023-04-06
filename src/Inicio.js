@@ -33,29 +33,29 @@ export default function Inicio(props) {
         <img src={image}/>
         <h4 className="textoRegistro"> Si desea crear una cuenta, rellene el formulario
         <div id="botonesSignin">
-        <input id="user" value={usuarioInput1} onChange={(event) => setUsuarioInput1(event.target.value)} placeholder="Nombre de usuario..."></input>
+        <input id="inputsFormulario" value={usuarioInput1} onChange={(event) => setUsuarioInput1(event.target.value)} placeholder="Nombre de usuario..."></input>
         <br />
-        <input id="contraseña" type="password" value={passInput1} onChange={(event) => setPassInput1(event.target.value)} placeholder="Introduzca contraseña..."></input>
+        <input id="inputsFormulario" type="password" value={passInput1} onChange={(event) => setPassInput1(event.target.value)} placeholder="Introduzca contraseña..."></input>
         <br />
-        <input id="NIF" value={NIFInput} onChange={(event) => setNIFInput(event.target.value)} placeholder="Introduzca su NIF..."></input>
+        <input id="inputsFormulario" value={NIFInput} onChange={(event) => setNIFInput(event.target.value)} placeholder="Introduzca su NIF..."></input>
         <br />
-        <input id="email" value={EmailInput} onChange={(event) => setEmailInput(event.target.value)} placeholder="Introduzca su email..."></input>
+        <input id="inputsFormulario" value={EmailInput} onChange={(event) => setEmailInput(event.target.value)} placeholder="Introduzca su email..."></input>
         <br />
-        <input id="nombre" value={NombreInput} onChange={(event) => setNombreInput(event.target.value)} placeholder="Introduzca su nombre..."></input>
+        <input id="inputsFormulario" value={NombreInput} onChange={(event) => setNombreInput(event.target.value)} placeholder="Introduzca su nombre..."></input>
         <br />
-        <input id="direccion" value={DireccionInput} onChange={(event) => setDireccionInput(event.target.value)} placeholder="Introduzca su dirección..."></input>
+        <input id="inputsFormulario" value={DireccionInput} onChange={(event) => setDireccionInput(event.target.value)} placeholder="Introduzca su dirección..."></input>
         <br />
-        <input id="telefono" value={TelefonoInput} onChange={(event) => setTelefonoInput(event.target.value)} placeholder="Introduzca su teléfono..."></input>
+        <input id="inputsFormulario" value={TelefonoInput} onChange={(event) => setTelefonoInput(event.target.value)} placeholder="Introduzca su teléfono..."></input>
         <br />
-        <input id="telefono" value={TelefonoInput} onChange={(event) => setTelefonoInput(event.target.value)} placeholder="Introduzca su teléfono..."></input>
+        <input id="inputsFormulario" value={TelefonoInput} onChange={(event) => setTelefonoInput(event.target.value)} placeholder="Introduzca su teléfono..."></input>
         <br />
+        </div>
         <div id="voluntario">
         <input type="checkbox" checked={estaMarcado} onChange={() => setEstaMarcado(!estaMarcado)} />
-        <span>¿Quieres registrarte como voluntario?</span>
+        <span id="span">¿Quieres registrarte como voluntario?</span>
         <br />
         </div>
         <button className = "registro" to="/Login">Registrarse</button>
-        </div>
         </h4>
     </div>
     </div>)

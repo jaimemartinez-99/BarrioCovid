@@ -12,6 +12,7 @@ import Carrito from './Carrito.js';
 import CONFIG from './config/config';
 import InicioScreen from './NavBar.js';
 import Inicio from './Inicio.js';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 function App() {
   const [cargando, setCargando] = useState(true);
