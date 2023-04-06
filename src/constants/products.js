@@ -1,7 +1,7 @@
 export const mockdata = {
   "products": [
     {
-      "id": 1,
+      "id": 0,
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
       "price": 549,

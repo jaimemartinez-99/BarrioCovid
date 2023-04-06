@@ -26,7 +26,7 @@ export const mockdata1 = {
         "title": "Frutería Vázquez",
         "description": "C/Praga",
         "category": "fruteria",
-        "thumbnail": "https://cdn-icons-png.flaticon.com/512/1475/1475957.png",
+        "thumbnail": "http://zonaretiro.com/wp-content/fotos/2012/01/letizia.jpg",
       },
       {
         "id": 5,

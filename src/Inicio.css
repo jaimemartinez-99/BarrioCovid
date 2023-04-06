@@ -1,9 +1,14 @@
-
-.textoUser {
+#cabecera{
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+}
+.textoUser {
+  flex:1;
+}
+
+.textoRegistro {
+  flex: 1;
 }
 
 
@@ -33,4 +38,49 @@
 .login:hover{
 	background: #FFAB91;
 }
+
+.registro{
+  position: relative;
+  width: 100px;
+	height: 40px;
+  margin-top: 20px;
+  text-align: center;
+	color: #fff;
+	background: #f0c992;
+	font-size: 1em;
+	font-weight: bold;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+.registro:hover{
+	background: #FFAB91;
+}
+
+#botonesSignin{
+  margin-top: 20px;
+  display: block;
+}
+label {
+	position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px; /* ajustar a la altura del span */
+  }
+  
+  .checkbox {
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+  }
+  
+ 
+  
+
+  
 
