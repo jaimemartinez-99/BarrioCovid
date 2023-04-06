@@ -21,7 +21,7 @@ export default function Producto (props) {
         				<img src={item[0]}></img>
 						</div>
 						<p> {item[1]}</p>
-        					<button className="boton">Añadir</button> 
+        					<button className="boton" onClick={e => funcion()}>Añadir </button> 
       </li>
     ))}
   </ul>
