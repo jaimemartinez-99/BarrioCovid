@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+.body{
+  font-family: 'Libre Caslon Text', serif;
+}
+
+
+#listaCarro{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#textoTotal{
+  font-weight: bold;
+}
+
+.procPedido{
+  position: relative;
+  width: 150px;
+	height: 40px;
+  margin-top: 20px;
+  text-align: center;
+	color: #fff;
+	background: #f0c992;
+	font-size: 1em;
+	font-weight: bold;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+.procPedido:hover{
+  font-size: 1.1rem;
+  color: #ff8a66;
+  border-bottom: 3px solid #FFAB91;
+}
+
+ul{
+  list-style-type: none;
+}

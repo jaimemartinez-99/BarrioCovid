@@ -1,9 +1,20 @@
 import {Link, useParams} from "react-router-dom";
 import "./Producto.css"
+
+
+import {useState} from "react"; 
+
 export default function Producto (props) {
+	const [carrito,setCarrito] = useState([]);
+	const handleAddClick = (itemName, itemPrice) => {
+		setCarrito([...carrito, {itemName,itemPrice}]);
+		localStorage.setItem('carrito', JSON.stringify([...carrito, {itemName,itemPrice}]));
+		console.log(carrito);
+		console.log(carrito.map((e)=>e.itemName));
+		console.log(carrito.map((e)=>e.itemPrice));
+	  }
 
     let { productId } = useParams();
-
 	return (<div id="titulo">
 			<p>
 		<b><img className="logoTienda"src={props.theproducts[productId].thumbnail} alt="imagen"></img> </b> 
@@ -25,7 +36,7 @@ export default function Producto (props) {
 						<p> {item[1]}</p>
 						<p> {item[2]}€/kg</p>
 						</div>
-        				<button className="botonAñadir"> Añadir </button> 
+        				<button className="botonAñadir" onClick={() => handleAddClick(item[1], item[2])}>Añadir</button>
 						
       </li>
     ))}
@@ -34,3 +45,4 @@ export default function Producto (props) {
 		<Link to="/Tiendas"><button id="volver">Volver</button></Link>
 	</div>)
 }
+

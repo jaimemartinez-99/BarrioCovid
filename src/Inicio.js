@@ -1,6 +1,6 @@
 import {useState} from "react";
 import './Inicio.css';
-import image from "./barriocovid.png"
+import image from "./images/barriocovid.png"
 
 
 export default function Inicio(props) {
@@ -47,11 +47,9 @@ export default function Inicio(props) {
         <br />
         <input id="inputsFormulario" value={TelefonoInput} onChange={(event) => setTelefonoInput(event.target.value)} placeholder="Introduzca su teléfono..."></input>
         <br />
-        <input id="inputsFormulario" value={TelefonoInput} onChange={(event) => setTelefonoInput(event.target.value)} placeholder="Introduzca su teléfono..."></input>
-        <br />
         </div>
         <div id="voluntario">
-        <input type="checkbox" checked={estaMarcado} onChange={() => setEstaMarcado(!estaMarcado)} />
+        <input type="checkbox" className="checkbox" checked={estaMarcado} onChange={() => setEstaMarcado(!estaMarcado)} />
         <span id="span">¿Quieres registrarte como voluntario?</span>
         <br />
         </div>
