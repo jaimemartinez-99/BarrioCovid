@@ -2,17 +2,27 @@ import {Link, useParams} from "react-router-dom";
 import "./Producto.css"
 
 
-import {useState} from "react"; 
+import { useState, useEffect } from "react";
 
 export default function Producto (props) {
-	const [carrito,setCarrito] = useState([]);
-	const handleAddClick = (itemName, itemPrice) => {
-		setCarrito([...carrito, {itemName,itemPrice}]);
-		localStorage.setItem('carrito', JSON.stringify([...carrito, {itemName,itemPrice}]));
-		console.log(carrito);
-		console.log(carrito.map((e)=>e.itemName));
-		console.log(carrito.map((e)=>e.itemPrice));
-	  }
+	const [carrito, setCarrito] = useState([]);
+
+  const handleAddClick = (itemName, itemPrice) => {
+    const updatedCarrito = [...carrito];
+    updatedCarrito.push({ itemName, itemPrice });
+    setCarrito(updatedCarrito);
+    localStorage.setItem('carrito', JSON.stringify(updatedCarrito));
+    console.log(carrito);
+    console.log(carrito.map((e) => e.itemName));
+    console.log(carrito.map((e) => e.itemPrice));
+  };
+
+  useEffect(() => {
+    const storedCarrito = JSON.parse(localStorage.getItem('carrito'));
+    if (storedCarrito) {
+      setCarrito(storedCarrito);
+    }
+  }, []);
 
     let { productId } = useParams();
 	return (<div id="titulo">
@@ -36,8 +46,7 @@ export default function Producto (props) {
 						<p> {item[1]}</p>
 						<p> {item[2]}€/kg</p>
 						</div>
-        				<button className="botonAñadir" onClick={() => handleAddClick(item[1], item[2])}>Añadir</button>
-						
+        				<button className="botonAñadir" onClick={() => handleAddClick(item[1], item[2])}>Añadir</button>				
       </li>
     ))}
   </ul>

@@ -8,9 +8,14 @@ export default function Carrito() {
 		const items = JSON.parse(localStorage.getItem("carrito")) || [];
 		setCarrito(items);
 	  }, []);
+
+    const vaciarCarrito = () => {{
+      setCarrito([]);
+      localStorage.removeItem('carrito');
+    }}
     return (
     <div id="carrito">
-        <h2>Carrito de compras</h2>
+        <h2>  Carrito de compras</h2>
         <div id="listaCarro">
         <ul>
         {carrito.map((item, index) => (
@@ -20,10 +25,12 @@ export default function Carrito() {
           </li>
         ))}
         <li>
-        <p id="textoTotal">Total:</p>
-        <p>{carrito.reduce((total, item) => total + item.itemPrice, 0)}€</p>
+        <p id="textoTotal">Total: {carrito.reduce((total, item) => total + item.itemPrice, 0)}€</p>
           </li>
-        <button className="procPedido"> Procesar pedido</button>
+          <div id='botoncitos'>
+        <button className="vaciarCarrito" onClick={vaciarCarrito}>Vaciar carrito</button>
+        <button className="procPedido">Procesar pedido</button>
+        </div>
         </ul>
       </div>
     </div>)
