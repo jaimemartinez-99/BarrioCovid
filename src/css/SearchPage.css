@@ -1,0 +1,39 @@
+.catalogo {
+  font-size: 36px;
+  font-family: "Libre Caslon Text", serif;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #000000;
+}
+
+#filtro {
+  margin-bottom: 24px;
+}
+#filtro::placeholder {
+  color: #999;
+  font-style: italic;
+  margin-left: 15px;
+}
+
+.boton {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+  background: #f0c992;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+
+.boton:hover {
+  font-size: 1.3rem;
+  color: #ff8a66;
+  border-bottom: 3px solid #ffab91;
+}

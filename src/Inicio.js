@@ -1,5 +1,6 @@
 import {useState} from "react";
-import './Inicio.css';
+import { Link } from 'react-router-dom';
+import './css/Inicio.css';
 import image from "./images/barriocovid.png"
 
 
@@ -15,6 +16,13 @@ export default function Inicio(props) {
     const [TelefonoInput, setTelefonoInput] = useState("");
     const [estaMarcado, setEstaMarcado] = useState(false);
 
+    const crearTexto = () => {
+        localStorage.setItem("usuario", JSON.stringify(usuarioInput))
+        localStorage.setItem("apellidos", JSON.stringify("López Ibáñez"))
+        localStorage.setItem("calle", JSON.stringify("C/Cantueso,20"))
+        localStorage.setItem("telefono", JSON.stringify("676738042"))
+      };
+
     return (<div id="total">
         <h3 className="mensaje">Bienvenido a BarrioCovid</h3>
         <div id="cabecera">
@@ -26,7 +34,9 @@ export default function Inicio(props) {
         <br />
         <input id="pass" type="password" value={passInput} onChange={(event) => setPassInput(event.target.value)} placeholder="Introduzca contraseña..."></input>
         <br />
-        <button className = "login" to="/Login">Login</button>
+        <Link to="/Perfil">
+            <button className = "login" onClick={crearTexto}>Login</button>
+        </Link>
         </div>
         </h4>
 

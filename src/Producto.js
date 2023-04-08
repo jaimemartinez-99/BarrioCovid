@@ -1,5 +1,5 @@
 import {Link, useParams} from "react-router-dom";
-import "./Producto.css"
+import "./css/Producto.css"
 
 
 import { useState, useEffect } from "react";
