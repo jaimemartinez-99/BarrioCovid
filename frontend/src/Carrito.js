@@ -7,6 +7,7 @@ export default function Carrito() {
   const [carrito, setCarrito] = useState([]);
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
   const [tRecogida, setTRecogida] = useState(null);
+  const [estaMarcado,setEstaMarcado] = useState(false);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -54,6 +55,7 @@ export default function Carrito() {
     let alertTimeout;
     if (mostrarAlerta && tRecogida !== null) {
       alertTimeout = setTimeout(() => {
+        estaMarcado ? 
         toast.success("Su pedido está listo, puede pasar a recogerlo.", {
           position: "top-center",
           autoClose: 5000,
@@ -63,7 +65,17 @@ export default function Carrito() {
           draggable: true,
           progress: undefined,
           theme: "colored",
-        });
+        }):
+        toast.success("Se va a efectuar la entrega de su pedido.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        }); 
         setMostrarAlerta(false);
       }, 10000);
     }
@@ -92,6 +104,10 @@ export default function Carrito() {
               €
             </p>
           </li>
+          <div id="confinado">
+          <input type="checkbox" className="checkbox" checked={!estaMarcado} onChange={() => setEstaMarcado(!estaMarcado)} />
+          <span id="span"> ¿Se encuentra confinado?</span>
+          </div>
           <div id="botoncitos">
             <button className="vaciarCarrito" onClick={vaciarCarrito}>
               Vaciar carrito
