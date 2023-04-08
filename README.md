@@ -14,6 +14,7 @@ La forma más sencilla de llevar a cabo el despliegue de la aplicación es de la
 ```
 git clone https://github.com/jaimemartinez-99/BarrioCovid
 cd BarrioCovid
+cd frontend
 npm install
 npm i react-toastify
 npm start
@@ -26,3 +27,23 @@ El trabajo de frontend se ha realizado usando React, un conocido framework de Ja
 Por ahora, el trabajo de backend no se ha realizado pero se hará uso de herramientas como Springboot y Thymeleaf.
 
 ## Imágenes de la aplicación
+A continuación se muestran unas imágenes de las diferentes vistas de la aplicación:
+
+**Vista inicio sesión/registro**
+![](fotos/menú_inicio.png)
+
+**Vista perfil**
+![](fotos/perfil.png)
+
+**Vista tiendas**
+![](fotos/tiendas.png)
+
+**Vista de una tienda**
+![](fotos/carniceria.png)
+
+**Vista carrito de la compra**
+![](fotos/carrito.png)
+
+
+
+
