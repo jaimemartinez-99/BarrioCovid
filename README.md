@@ -24,3 +24,5 @@ El trabajo de frontend se ha realizado usando React, un conocido framework de Ja
 
 ## Backend
 Por ahora, el trabajo de backend no se ha realizado pero se hará uso de herramientas como Springboot y Thymeleaf.
+
+## Imágenes de la aplicación
