@@ -4,10 +4,10 @@ import "./css/Perfil.css";
 import { useState, useEffect } from "react";
 
 export default function Perfil(props) {
-  const usuario = JSON.parse(localStorage.getItem("usuario"));
-  const apellidos = JSON.parse(localStorage.getItem("apellidos"));
-  const calle = JSON.parse(localStorage.getItem("calle"));
+  const nombre = localStorage.getItem("nombre");
+  const direccion = localStorage.getItem("direccion");
   const telefono = JSON.parse(localStorage.getItem("telefono"));
+
   const tRecogida = JSON.parse(localStorage.getItem("tRecogida"));
 
   const [fechaEntrega, setFechaEntrega] = useState(null);
@@ -24,20 +24,18 @@ export default function Perfil(props) {
   }, [tRecogida]);
 
   const handleLogout = () => {
-    localStorage.removeItem("usuario");
-    localStorage.removeItem("ahora");
-    localStorage.removeItem("apellidos");
-    localStorage.removeItem("calle");
+    localStorage.removeItem("nombre");
+    localStorage.removeItem("direccion");
     localStorage.removeItem("telefono");
+    localStorage.removeItem("ahora");
   };
 
   return (
-    localStorage.getItem("usuario") ? 
+    localStorage.getItem("nombre") ? 
     <div id="perfil">
       <>
-        <h3 className="mensaje">{usuario}</h3>
-        <h3 className="mensaje">{apellidos}</h3>
-        <h3 className="mensaje">{calle}</h3>
+        <h3 className="mensaje">{nombre}</h3>
+        <h3 className="mensaje">{direccion}</h3>
         <h3 className="mensaje">{telefono}</h3>
       </>
 

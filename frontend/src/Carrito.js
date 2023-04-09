@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./css/Carrito.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -77,7 +78,7 @@ export default function Carrito() {
           theme: "colored",
         }); 
         setMostrarAlerta(false);
-      }, 10000);
+      }, tRecogida * 60 * 1000);
     }
     return () => {
       clearTimeout(alertTimeout);
@@ -85,40 +86,48 @@ export default function Carrito() {
   }, [mostrarAlerta, tRecogida]);
 
   return (
-    <div id="carrito">
-      <h2> Carrito de compras</h2>
-      <div id="listaCarro">
-        <ul>
-          {carrito.map((item, index) => (
-            <li key={index}>
-              <p>{item.itemName}</p>
-              <p>{item.itemPrice}€</p>
+    localStorage.getItem("nombre") ? 
+    <><div id="carrito">
+        <h2> Carrito de compras</h2>
+        <div id="listaCarro">
+          <ul>
+            {carrito.map((item, index) => (
+              <li key={index}>
+                <p>{item.itemName}</p>
+                <p>{item.itemPrice}€</p>
+              </li>
+            ))}
+            <li>
+              <p id="textoTotal">
+                Total:{" "}
+                {carrito
+                  .reduce((total, item) => total + item.itemPrice, 0)
+                  .toFixed(2)}
+                €
+              </p>
             </li>
-          ))}
-          <li>
-            <p id="textoTotal">
-              Total:{" "}
-              {carrito
-                .reduce((total, item) => total + item.itemPrice, 0)
-                .toFixed(2)}
-              €
-            </p>
-          </li>
-          <div id="confinado">
-          <input type="checkbox" className="checkbox" checked={!estaMarcado} onChange={() => setEstaMarcado(!estaMarcado)} />
-          <span id="span"> ¿Se encuentra confinado?</span>
-          </div>
-          <div id="botoncitos">
-            <button className="vaciarCarrito" onClick={vaciarCarrito}>
-              Vaciar carrito
-            </button>
-            <button className="procPedido" onClick={procesarPedido}>
-              Procesar pedido
-            </button>
-          </div>
-        </ul>
-      </div>
-      <ToastContainer />
-    </div>
+            <div id="confinado">
+              <input type="checkbox" className="checkbox" checked={!estaMarcado} onChange={() => setEstaMarcado(!estaMarcado)} />
+              <span id="span"> ¿Se encuentra confinado?</span>
+            </div>
+            <div id="botoncitos">
+              <button className="vaciarCarrito" onClick={vaciarCarrito}>
+                Vaciar carrito
+              </button>
+              <button className="procPedido" onClick={procesarPedido}>
+                Procesar pedido
+              </button>
+            </div>
+          </ul>
+
+        </div>
+        <ToastContainer />
+      </div> 
+      
+        </>
+        :
+        <Link to="/">
+          <button id="volverInicio"> Volver a inicio </button>
+      </Link>
   );
 }
