@@ -1,5 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import "./css/Producto.css"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 import { useState, useEffect } from "react";
@@ -12,9 +14,16 @@ export default function Producto (props) {
     updatedCarrito.push({ itemName, itemPrice });
     setCarrito(updatedCarrito);
     localStorage.setItem('carrito', JSON.stringify(updatedCarrito));
-    console.log(carrito);
-    console.log(carrito.map((e) => e.itemName));
-    console.log(carrito.map((e) => e.itemPrice));
+    toast.success("Producto añadido", {
+		position: "top-center",
+		autoClose: 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: "colored",
+	  });
   };
 
   useEffect(() => {
@@ -52,6 +61,7 @@ export default function Producto (props) {
   </ul>
   </div>
 		<Link to="/Tiendas"><button id="volver">Volver</button></Link>
+		<ToastContainer />
 	</div>)
 }
 

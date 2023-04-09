@@ -28,6 +28,8 @@ export default function Perfil(props) {
     localStorage.removeItem("direccion");
     localStorage.removeItem("telefono");
     localStorage.removeItem("ahora");
+    localStorage.removeItem("tRecogida");
+    localStorage.removeItem("carrito");
   };
 
   return (

@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Inicio(props) {
     const [usuarioInput, setUsuarioInput] = useState("");
     const [passInput, setPassInput] = useState("");
-    const [nombre, setNombre] = useState(false);
+    const [nombre, setNombre] = useState();
     const [usuario, setUsuario] = useState("");
     const [pass, setPass] = useState("");
     const [NIF, setNIF] = useState("");
@@ -29,7 +29,19 @@ export default function Inicio(props) {
             headers:{ "Content-Type":"application/json"},
             body:JSON.stringify(usuarioBBDD)
         }).then(() => {
-            console.log("Nuevo usuario de BarrioCovid")
+            toast.success("¡Bienvenido a BarrioCovid!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
         })
     }
 

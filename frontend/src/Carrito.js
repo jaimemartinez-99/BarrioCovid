@@ -78,7 +78,7 @@ export default function Carrito() {
           theme: "colored",
         }); 
         setMostrarAlerta(false);
-      }, tRecogida * 60 * 1000);
+      }, 7000);
     }
     return () => {
       clearTimeout(alertTimeout);
