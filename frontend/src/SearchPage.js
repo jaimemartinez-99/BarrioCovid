@@ -13,7 +13,6 @@ export default function SearchPage(props) {
   }
 
     return (
-    localStorage.getItem("nombre") ? 
     <div>
     <h2 className="catalogo">Tiendas</h2>
     <input id="filtro" value={searchInput} onChange={(event) => setSearchInput(event.target.value)} placeholder="Nombre de la tienda"></input>
@@ -42,8 +41,5 @@ export default function SearchPage(props) {
   </ul>
   </div>
   </div>
-  : <Link to="/">
-    <button id="volverInicio"> Volver a inicio </button>
-    </Link>
     );
 }

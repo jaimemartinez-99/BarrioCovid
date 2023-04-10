@@ -18,7 +18,7 @@ export default function Inicio(props) {
     const [telefono, setTelefono] = useState("");
     const [voluntario, setVoluntario] = useState(false);
     const [listaUsers,setlistaUsers] = useState([]);
-
+    const [listaTiendas,setlistaTiendas] = useState([]);
 
     const handleClick=(e)=>{
         e.preventDefault()
@@ -54,6 +54,19 @@ export default function Inicio(props) {
         }
         )
     },[])
+
+    useEffect(() => {
+        fetch("http://localhost:8080/vendedor/getAll")
+        .then(res=> res.json())
+        .then((result)=>{
+            setlistaTiendas(result);
+            console.log(result);
+        }
+        )
+    },[])
+
+
+
     const handleLogin = () => {
         if (listaUsers.some(user => user.email === usuarioInput && user.pass === passInput)) {
             toast.success("Sesión iniciada. ¡Disfrute de BarrioCovid!", {
@@ -85,6 +98,39 @@ export default function Inicio(props) {
         }
       };
 
+      const handleLoginTienda = () => {
+        if (listaTiendas.some(user => user.email === usuarioInput && user.pass === passInput)) {
+            toast.success("Sesión iniciada. ¡Disfrute de BarrioCovid!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+            const usuario = listaTiendas.find(user => user.email === usuarioInput);
+            const { nombre, direccion, telefono, vendedor } = usuario;
+            localStorage.setItem('nombre', nombre);
+            localStorage.setItem('direccion', direccion);
+            localStorage.setItem('telefono', telefono);  
+            localStorage.setItem('vendedor', 'true');
+        } else {
+            toast.error("Usuario Incorrecto.", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+        }
+      };
+
+
     return (
     <div id="total">
         <h3 className="mensaje">Bienvenido a BarrioCovid</h3>
@@ -92,13 +138,14 @@ export default function Inicio(props) {
         
         
         <h4 className="textoUser"> Si ya tiene cuenta creada identifíquese
-        <div id="botonesLogin">
+        <div id="inputUser">
         <input id="usuario" value={usuarioInput} onChange={(event) => setUsuarioInput(event.target.value)} placeholder="Introduzca su email..."></input>
         <br />
         <input id="pass" type="password" value={passInput} onChange={(event) => setPassInput(event.target.value)} placeholder="Introduzca contraseña..."></input>
         <br />
-        <button className = "login" onClick={handleLogin}>Login</button>
         </div>
+        <button className = "login" onClick={handleLogin}>Iniciar sesión </button>
+        <button className = "loginTienda" onClick={handleLoginTienda}>Iniciar sesión a tienda</button>
         </h4>
 
         <img src={image}/>

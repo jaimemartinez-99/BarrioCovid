@@ -1,6 +1,5 @@
 #cabecera {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .textoUser {
@@ -10,19 +9,17 @@
 .textoRegistro {
   flex: 1;
 }
-
-#botonesLogin {
-  position: relative;
-  display: block;
-  justify-content: flex-start;
+#inputUser{
+  justify-content: space-between;
   margin-top: 20px;
 }
 
 .login {
   position: relative;
-  width: 70px;
+  width: 90px;
   height: 40px;
   margin-top: 20px;
+  margin-right:20px;
   text-align: center;
   color: #fff;
   background: #f0c992;
@@ -35,6 +32,25 @@
   cursor: pointer;
 }
 .login:hover {
+  background: #ffab91;
+}
+
+.loginTienda {
+  position: relative;
+  width: 120px;
+  height: 50px;
+  text-align: center;
+  color: #fff;
+  background: #f0c992;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+.loginTienda:hover {
   background: #ffab91;
 }
 

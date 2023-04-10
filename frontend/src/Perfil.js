@@ -30,6 +30,7 @@ export default function Perfil(props) {
     localStorage.removeItem("ahora");
     localStorage.removeItem("tRecogida");
     localStorage.removeItem("carrito");
+    localStorage.removeItem("vendedor");
   };
 
   return (

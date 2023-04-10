@@ -10,6 +10,7 @@ export default function Producto (props) {
 	const [carrito, setCarrito] = useState([]);
 
   const handleAddClick = (itemName, itemPrice) => {
+	if (localStorage.getItem("nombre")){
     const updatedCarrito = [...carrito];
     updatedCarrito.push({ itemName, itemPrice });
     setCarrito(updatedCarrito);
@@ -24,7 +25,19 @@ export default function Producto (props) {
 		progress: undefined,
 		theme: "colored",
 	  });
-  };
+  } else {
+	toast.warn("No ha iniciado sesión", {
+		position: "top-center",
+		autoClose: 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: "colored",
+	  });
+  }
+}
 
   useEffect(() => {
     const storedCarrito = JSON.parse(localStorage.getItem('carrito'));
