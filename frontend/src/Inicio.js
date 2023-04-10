@@ -12,7 +12,7 @@ export default function Inicio(props) {
     const [nombre, setNombre] = useState();
     const [usuario, setUsuario] = useState("");
     const [pass, setPass] = useState("");
-    const [NIF, setNIF] = useState("");
+    const [nif, setnif] = useState("");
     const [email, setEmail] = useState("");
     const [direccion, setDireccion] = useState("");
     const [telefono, setTelefono] = useState("");
@@ -22,7 +22,7 @@ export default function Inicio(props) {
 
     const handleClick=(e)=>{
         e.preventDefault()
-        const usuarioBBDD={nombre,usuario,direccion,email,pass,NIF,telefono,voluntario};
+        const usuarioBBDD={nombre,usuario,direccion,email,pass,nif,telefono,voluntario};
         console.log(usuarioBBDD);
         fetch("http://localhost:8080/usuario/add",{
             method:"POST",
@@ -155,7 +155,7 @@ export default function Inicio(props) {
         <br />
         <input id="inputsFormulario" type="password" value={pass} onChange={(event) => setPass(event.target.value)} placeholder="Introduzca contraseña..."></input>
         <br />
-        <input id="inputsFormulario" value={NIF} onChange={(event) => setNIF(event.target.value)} placeholder="Introduzca su NIF..."></input>
+        <input id="inputsFormulario" value={nif} onChange={(event) => setnif(event.target.value)} placeholder="Introduzca su NIF..."></input>
         <br />
         <input id="inputsFormulario" value={nombre} onChange={(event) => setNombre(event.target.value)} placeholder="Introduzca su nombre..."></input>
         <br />

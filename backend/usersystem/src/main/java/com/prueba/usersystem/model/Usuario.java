@@ -10,7 +10,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int NIF;
+    private int nif;
     private String nombre;
     private String direccion;
     private String email;
@@ -28,12 +28,12 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
-    public int getNIF() {
-        return this.NIF;
+    public int getnif() {
+        return this.nif;
     }
 
-    public void setNIF(int NIF) {
-        this.NIF = NIF;
+    public void setnif(int nif) {
+        this.nif = nif;
     }
 
     public String getNombre() {
