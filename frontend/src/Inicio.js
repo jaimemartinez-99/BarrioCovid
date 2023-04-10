@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
 import './css/Inicio.css';
-import image from "./images/barriocovid.png"
+import image from "./images/barriocovid1.png"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
