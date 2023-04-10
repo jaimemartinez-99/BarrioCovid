@@ -24,7 +24,7 @@ Tras esto, podrá utilizar la aplicación en la direccion: **localhost:3000**
 El trabajo de frontend se ha realizado usando React, un conocido framework de JavaScript.
 
 ## Backend
-Por ahora, el trabajo de backend no se ha realizado pero se hará uso de herramientas como Springboot y Thymeleaf.
+El trabajo de backend se ha realizado usando Springboot como servidor y MySQL para almacenar la información.
 
 ## Imágenes de la aplicación
 A continuación se muestran unas imágenes de las diferentes vistas de la aplicación:
