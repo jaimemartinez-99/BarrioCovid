@@ -11,6 +11,8 @@ import Perfil from './Perfil.js';
 import Carrito from './Carrito.js';
 import InicioScreen from './NavBar.js';
 import Inicio from './Inicio.js';
+import MiTienda from './MiTienda.js';
+import Pedidos from './Pedidos.js';
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
      <Route path="*" element={<NoMatch/>}/>
      <Route path="/Perfil" element={<Perfil/>}/>
      <Route path="/Carrito" element={<Carrito/>}/>
+     <Route path="/MiTienda" element={<MiTienda/>}/>
+     <Route path="/Pedidos" element={<Pedidos/>}/>
      </Routes> 
     </div>
   );

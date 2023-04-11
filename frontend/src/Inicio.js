@@ -80,10 +80,14 @@ export default function Inicio(props) {
                 theme: "colored",
               });
             const usuario = listaUsers.find(user => user.email === usuarioInput);
-            const { nombre, direccion, telefono } = usuario;
+            const { nombre, direccion, telefono, voluntario } = usuario;
             localStorage.setItem('nombre', nombre);
             localStorage.setItem('direccion', direccion);
-            localStorage.setItem('telefono', telefono);    
+            localStorage.setItem('telefono', telefono);  
+            localStorage.setItem('voluntario', voluntario); 
+            setTimeout(() => {
+                window.location.reload();
+              }, 3000);  
         } else {
             toast.error("Usuario Incorrecto.", {
                 position: "top-center",
@@ -111,11 +115,14 @@ export default function Inicio(props) {
                 theme: "colored",
               });
             const usuario = listaTiendas.find(user => user.email === usuarioInput);
-            const { nombre, direccion, telefono, vendedor } = usuario;
+            const { nombre, direccion, telefono, comercio} = usuario;
             localStorage.setItem('nombre', nombre);
             localStorage.setItem('direccion', direccion);
             localStorage.setItem('telefono', telefono);  
-            localStorage.setItem('vendedor', 'true');
+            localStorage.setItem('comercio', comercio); 
+            setTimeout(() => {
+                window.location.reload();
+              }, 3000);
         } else {
             toast.error("Usuario Incorrecto.", {
                 position: "top-center",

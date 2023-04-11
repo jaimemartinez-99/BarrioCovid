@@ -7,7 +7,7 @@ export default function Perfil(props) {
   const nombre = localStorage.getItem("nombre");
   const direccion = localStorage.getItem("direccion");
   const telefono = JSON.parse(localStorage.getItem("telefono"));
-
+  const voluntario = JSON.parse(localStorage.getItem("voluntario"));
   const tRecogida = JSON.parse(localStorage.getItem("tRecogida"));
 
   const [fechaEntrega, setFechaEntrega] = useState(null);
@@ -30,7 +30,8 @@ export default function Perfil(props) {
     localStorage.removeItem("ahora");
     localStorage.removeItem("tRecogida");
     localStorage.removeItem("carrito");
-    localStorage.removeItem("vendedor");
+    localStorage.removeItem("comercio");
+    localStorage.removeItem("voluntario");
   };
 
   return (
@@ -40,6 +41,7 @@ export default function Perfil(props) {
         <h3 className="mensaje">{nombre}</h3>
         <h3 className="mensaje">{direccion}</h3>
         <h3 className="mensaje">{telefono}</h3>
+        {voluntario ? <h3 className="mensaje">Soy voluntario</h3> : null }
       </>
 
       <Link to="/">

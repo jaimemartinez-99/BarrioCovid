@@ -23,7 +23,7 @@ public class VendedorController {
     @PostMapping("/add")
     public String add(@RequestBody Vendedor vendedor){
         vendedorService.saveVendedor(vendedor);
-        return "New vendedor is added" + vendedor.getNIF() + vendedor.getTelefono();
+        return "New vendedor is added";
     }
 
     @GetMapping("/getAll")

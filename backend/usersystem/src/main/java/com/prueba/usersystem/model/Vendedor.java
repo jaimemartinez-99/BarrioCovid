@@ -18,7 +18,7 @@ public class Vendedor {
     public void setId(int id) {
         this.id = id;
     }
-    private int NIF;
+    private int nif;
     private String nombre;
     private String email;
     private String pass;
@@ -30,12 +30,12 @@ public class Vendedor {
     public Vendedor() {
     }
 
-    public int getNIF() {
-        return this.NIF;
+    public int getnif() {
+        return this.nif;
     }
 
-    public void setNIF(int NIF) {
-        this.NIF = NIF;
+    public void setnif(int nif) {
+        this.nif = nif;
     }
 
     public String getNombre() {
