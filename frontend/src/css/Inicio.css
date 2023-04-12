@@ -1,24 +1,13 @@
 #cabecera {
   display: flex;
-  align-items: center;
-}
-.textoUser {
-  flex: 1;
+  align-items:center;
+  justify-content: center;
 }
 
-.textoRegistro {
-  flex: 1;
-}
-#inputUser{
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.login {
+.login1 {
   position: relative;
-  width: 90px;
-  height: 40px;
-  margin-top: 20px;
+  width: 150px;
+  height: 50px;
   margin-right:20px;
   text-align: center;
   color: #fff;
@@ -31,13 +20,15 @@
   transition: 0.2s ease-in;
   cursor: pointer;
 }
-.login:hover {
-  background: #ffab91;
+.login1:hover {
+  font-size: 1.3rem;
+  color: #ff8a66;
+  border-bottom: 3px solid #ffab91;
 }
 
-.loginTienda {
+.registrarse {
   position: relative;
-  width: 120px;
+  width: 150px;
   height: 50px;
   text-align: center;
   color: #fff;
@@ -50,41 +41,9 @@
   transition: 0.2s ease-in;
   cursor: pointer;
 }
-.loginTienda:hover {
-  background: #ffab91;
+.registrarse:hover {
+  font-size: 1.3rem;
+  color: #ff8a66;
+  border-bottom: 3px solid #ffab91;
 }
 
-.registro {
-  position: relative;
-  width: 100px;
-  height: 40px;
-  margin-top: 20px;
-  text-align: center;
-  color: #fff;
-  background: #f0c992;
-  font-size: 1em;
-  font-weight: bold;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  transition: 0.2s ease-in;
-  cursor: pointer;
-}
-.registro:hover {
-  background: #ffab91;
-}
-
-#botonesSignin {
-  margin-top: 10px;
-  display: block;
-}
-
-#inputsFormulario {
-  margin-top: 5px;
-}
-#voluntario {
-  margin-top: 5px;
-}
-#span {
-  font-size: 19px;
-}

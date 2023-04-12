@@ -11,6 +11,8 @@ import Perfil from './Perfil.js';
 import Carrito from './Carrito.js';
 import InicioScreen from './NavBar.js';
 import Inicio from './Inicio.js';
+import InicioSesion from './InicioSesion.js';
+import Registro from './Registro.js';
 import MiTienda from './MiTienda.js';
 import Pedidos from './Pedidos.js';
 
@@ -27,7 +29,9 @@ function App() {
         <InicioScreen></InicioScreen>
       </header>
      <Routes>
-     <Route path="/" element={<Inicio />}/>
+     <Route path="/" element={<Inicio/>}/>
+     <Route path="InicioSesion" element={<InicioSesion/>}/>
+     <Route path="Registro" element={<Registro/>}/>
      <Route path="/Tiendas" element={<SearchPage theproducts={theproducts}/>}/>
      <Route path="/products/:productId" element={<Producto theproducts={theproducts}/>}/>
      <Route path="*" element={<NoMatch/>}/>
