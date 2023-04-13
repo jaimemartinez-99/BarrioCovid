@@ -9,6 +9,7 @@ export default function Carrito() {
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
   const [tRecogida, setTRecogida] = useState(null);
   const [estaMarcado,setEstaMarcado] = useState(false);
+  
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("carrito")) || [];

@@ -15,7 +15,6 @@ public class VendedorServiceImpl implements VendedorService{
     @Override
     public Vendedor saveVendedor(Vendedor vendedor){
         return vendedorRepository.save(vendedor);
-
     }
 
     @Override

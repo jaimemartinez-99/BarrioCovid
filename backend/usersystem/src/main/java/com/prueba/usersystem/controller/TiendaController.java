@@ -4,8 +4,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.prueba.usersystem.model.Vendedor;
-import com.prueba.usersystem.service.VendedorService;
+import com.prueba.usersystem.model.Tienda;
+import com.prueba.usersystem.service.TiendaService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/vendedor")
+@RequestMapping("/tienda")
 @CrossOrigin
-public class VendedorController {
+public class TiendaController {
     @Autowired
-    private VendedorService vendedorService;
-
+    private TiendaService TiendaService;
     @PostMapping("/add")
-    public String add(@RequestBody Vendedor vendedor){
-        vendedorService.saveVendedor(vendedor);
-        return "New vendedor is added";
+    public String add(@RequestBody Tienda Tienda){
+        TiendaService.saveTienda(Tienda);
+        return "New Tienda is added";
     }
 
     @GetMapping("/getAll")
-    public List<Vendedor> getAllUsuarios(){
-        return vendedorService.getAllVendedores();
-    }  
+    public List<Tienda> getAllUsuarios(){
+        return TiendaService.getAllTiendas();
+    }
+    
 }

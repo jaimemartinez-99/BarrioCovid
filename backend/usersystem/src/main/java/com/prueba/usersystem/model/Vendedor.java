@@ -1,7 +1,9 @@
 package com.prueba.usersystem.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -24,8 +26,16 @@ public class Vendedor {
     private String pass;
     private int telefono;
     private String direccion;
-    private String comercio;
+    @OneToOne(mappedBy = "vendedor")
+    private Tienda tienda;
 
+    public Tienda getTienda() {
+        return this.tienda;
+    }
+
+    public void setTienda(Tienda tienda) {
+        this.tienda = tienda;
+    }
 
     public Vendedor() {
     }
@@ -76,14 +86,6 @@ public class Vendedor {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public String getComercio() {
-        return this.comercio;
-    }
-
-    public void setComercio(String comercio) {
-        this.comercio = comercio;
     }
 
     

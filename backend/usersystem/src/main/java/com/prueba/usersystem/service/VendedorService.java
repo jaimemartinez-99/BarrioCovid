@@ -7,5 +7,4 @@ import com.prueba.usersystem.model.Vendedor;
 public interface VendedorService {
     public Vendedor saveVendedor (Vendedor vendedor);
     public List<Vendedor> getAllVendedores();
-    
 }
