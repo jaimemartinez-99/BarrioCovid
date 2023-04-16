@@ -10,7 +10,6 @@ export default function Producto (props) {
 	const [carrito, setCarrito] = useState([]);
 
   const handleAddClick = (itemName, itemPrice) => {
-	if (localStorage.getItem("nombre")){
     const updatedCarrito = [...carrito];
     updatedCarrito.push({ itemName, itemPrice });
     setCarrito(updatedCarrito);
@@ -25,18 +24,6 @@ export default function Producto (props) {
 		progress: undefined,
 		theme: "colored",
 	  });
-  } else {
-	toast.warn("No ha iniciado sesión", {
-		position: "top-center",
-		autoClose: 5000,
-		hideProgressBar: false,
-		closeOnClick: true,
-		pauseOnHover: true,
-		draggable: true,
-		progress: undefined,
-		theme: "colored",
-	  });
-  }
 }
 
   useEffect(() => {
@@ -68,7 +55,7 @@ export default function Producto (props) {
 						<p> {item[1]}</p>
 						<p> {item[2]}€/kg</p>
 						</div>
-        				<button className="botonAñadir" onClick={() => handleAddClick(item[1], item[2])}>Añadir</button>				
+        				{localStorage.getItem("nombre") && <button className="botonAñadir" onClick={() => handleAddClick(item[1], item[2])}>Añadir</button> }				
       </li>
     ))}
   </ul>

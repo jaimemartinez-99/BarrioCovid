@@ -27,7 +27,7 @@ public class VendedorController {
     }
 
     @GetMapping("/getAll")
-    public List<Vendedor> getAllUsuarios(){
+    public List<Vendedor> getAllVendedores(){
         return vendedorService.getAllVendedores();
-    }  
+    } 
 }

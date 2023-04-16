@@ -3,14 +3,15 @@ package com.prueba.usersystem.model;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+
 
 @Entity
 public class Tienda {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
     private int id;
     private String nombre;
     private String link_img;
@@ -18,20 +19,9 @@ public class Tienda {
     private int telefono;
     private String direccion;
 
-    public int getTelefono() {
-        return this.telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
     @OneToOne
-    @JoinColumn(name = "nif")
+    @JoinColumn(name = "vendedor_nif", referencedColumnName = "nif")
     private Vendedor vendedor;
-
-    public Tienda() {
-    }
 
     public int getId() {
         return this.id;
@@ -65,6 +55,13 @@ public class Tienda {
         this.email = email;
     }
 
+    public int getTelefono() {
+        return this.telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
 
     public String getDireccion() {
         return this.direccion;
@@ -81,5 +78,6 @@ public class Tienda {
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
-   
+
+
 }

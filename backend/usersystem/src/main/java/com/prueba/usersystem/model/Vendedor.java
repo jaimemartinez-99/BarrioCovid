@@ -1,32 +1,27 @@
 package com.prueba.usersystem.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+
 
 @Entity
 public class Vendedor {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
     private int nif;
     private String nombre;
     private String email;
     private String pass;
     private int telefono;
     private String direccion;
-    @OneToOne(mappedBy = "vendedor")
+    
+    @JsonIgnore
+    @OneToOne(mappedBy = "vendedor", cascade = CascadeType.REMOVE)
     private Tienda tienda;
 
     public Tienda getTienda() {

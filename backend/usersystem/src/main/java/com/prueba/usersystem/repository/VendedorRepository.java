@@ -6,7 +6,5 @@ import com.prueba.usersystem.model.Vendedor;
 
 @Repository
 public interface VendedorRepository extends JpaRepository<Vendedor,Integer> {
-
-    Vendedor findByNif(int nif);
     
 }

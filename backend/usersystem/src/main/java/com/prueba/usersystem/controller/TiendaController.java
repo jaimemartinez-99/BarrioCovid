@@ -22,11 +22,12 @@ public class TiendaController {
     @PostMapping("/add")
     public String add(@RequestBody Tienda Tienda){
         TiendaService.saveTienda(Tienda);
-        return "New Tienda is added";
+        return "New Tienda is added" + Tienda.getVendedor();
+        
     }
 
     @GetMapping("/getAll")
-    public List<Tienda> getAllUsuarios(){
+    public List<Tienda> getAllTiendas(){
         return TiendaService.getAllTiendas();
     }
     
