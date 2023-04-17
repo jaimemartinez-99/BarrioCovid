@@ -7,11 +7,14 @@ import jakarta.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 
 @Entity
 public class Tienda {
-    @Id 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
     private String link_img;
@@ -19,18 +22,19 @@ public class Tienda {
     private int telefono;
     private String direccion;
 
+    
+
     @OneToOne
     @JoinColumn(name = "vendedor_nif", referencedColumnName = "nif")
     private Vendedor vendedor;
 
-    public int getId() {
-        return this.id;
+    public int getTelefono() {
+        return this.telefono;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
-
     public String getNombre() {
         return this.nombre;
     }
@@ -53,14 +57,6 @@ public class Tienda {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getTelefono() {
-        return this.telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
     }
 
     public String getDireccion() {

@@ -2,6 +2,7 @@ package com.prueba.usersystem.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -19,7 +20,7 @@ public class Vendedor {
     private String pass;
     private int telefono;
     private String direccion;
-    
+
     @JsonIgnore
     @OneToOne(mappedBy = "vendedor", cascade = CascadeType.REMOVE)
     private Tienda tienda;
