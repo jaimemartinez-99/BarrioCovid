@@ -8,4 +8,5 @@ public interface ProductoService {
     public Producto saveProducto (Producto Producto);
     public List<Producto> getAllProductos();
     public List<Producto> getAllProductosByEmail(String email);
+    public Producto modifyPrice (Producto Producto, int precio);
 }

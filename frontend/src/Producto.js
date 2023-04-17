@@ -10,7 +10,8 @@ import { useState, useEffect } from "react";
 export default function Producto (props) {
 	const [carrito, setCarrito] = useState([]);
 	const [listaProductos, setlistaProductos] = useState([]);
-
+    let pathname = window.location.pathname;
+	let new_pathname = pathname.substring(1);	
 
   const handleAddClick = (itemName, itemPrice) => {
     const updatedCarrito = [...carrito];
@@ -28,10 +29,8 @@ export default function Producto (props) {
 		theme: "colored",
 	  });
 }
-let { email } = useParams();
-
 	useEffect(() => {
-    fetch("http://localhost:8080/producto/getAll/{email}")
+    fetch(`http://localhost:8080/producto/getAll/${new_pathname}`)
       .then((res) => res.json())
       .then((result) => {
         setlistaProductos(result);

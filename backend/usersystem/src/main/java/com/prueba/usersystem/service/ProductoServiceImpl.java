@@ -27,5 +27,9 @@ public class ProductoServiceImpl implements ProductoService{
     public List<Producto> getAllProductosByEmail(String email){
         return ProductoRepository.findByEmail(email);
     }
+    @Override
+    public Producto modifyPrice(Producto Producto, int precio){
+        return ProductoRepository.save(Producto);
+    }
    
 }

@@ -39,7 +39,7 @@ export default function SearchPage(props) {
         <p><b>{item.nombre}</b></p>  
         <p><b>{item.telefono}</b></p>
         <p><b>{item.direccion}</b></p>     
-        <Link to={`/products/${item.email}`}>
+        <Link to={`/${item.email}`}>
           <button className="boton">Ver</button></Link>  
       </li>
     ))}

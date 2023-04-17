@@ -22,4 +22,9 @@ public class TiendaServiceImpl implements TiendaService{
     public List<Tienda> getAllTiendas(){
         return TiendaRepository.findAll();
     }
+
+    @Override
+    public Tienda getAllTiendasByNif(int vendedor_nif){
+        return TiendaRepository.findByNif(vendedor_nif);
+    }  
 }

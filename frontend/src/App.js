@@ -15,6 +15,7 @@ import InicioSesion from './InicioSesion.js';
 import Registro from './Registro.js';
 import MiTienda from './MiTienda.js';
 import Pedidos from './Pedidos.js';
+import Stock from './Stock.js';
 
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
      <Route path="InicioSesion" element={<InicioSesion/>}/>
      <Route path="Registro" element={<Registro/>}/>
      <Route path="/Tiendas" element={<SearchPage/>}/>
-     <Route path="/products/:email" element={<Producto/>}/>
+     <Route path="/:email" element={<Producto/>}/>
+    <Route path="/:email/stock" element={<Stock/>}/>
      <Route path="*" element={<NoMatch/>}/>
      <Route path="/Perfil" element={<Perfil/>}/>
      <Route path="/Carrito" element={<Carrito/>}/>

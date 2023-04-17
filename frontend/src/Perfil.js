@@ -32,6 +32,8 @@ export default function Perfil(props) {
     localStorage.removeItem("carrito");
     localStorage.removeItem("comercio");
     localStorage.removeItem("voluntario");
+    localStorage.removeItem("nif");
+    localStorage.removeItem("id");
   };
 
   return (
