@@ -10,6 +10,7 @@ export default function SearchPage(props) {
   const [selector, setSelector] = useState("All");
   const [listaTiendas,setlistaTiendas] = useState([]);
 
+
   useEffect(() => {
     fetch("http://localhost:8080/tienda/getAll")
       .then((res) => res.json())
@@ -18,7 +19,7 @@ export default function SearchPage(props) {
         console.log(result);
       });
   }, []);
- 
+  
   const filtrar = () => {
     setFiltro(searchInput);
   }
@@ -38,7 +39,8 @@ export default function SearchPage(props) {
         <p><b>{item.nombre}</b></p>  
         <p><b>{item.telefono}</b></p>
         <p><b>{item.direccion}</b></p>     
-        <Link to={"/products/"+ props.theproducts.indexOf(item)}><button className="boton">Ver</button></Link>  
+        <Link to={`/products/${item.email}`}>
+          <button className="boton">Ver</button></Link>  
       </li>
     ))}
   </ul>

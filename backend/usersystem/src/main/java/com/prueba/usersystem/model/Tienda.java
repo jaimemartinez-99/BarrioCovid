@@ -2,9 +2,12 @@ package com.prueba.usersystem.model;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,11 +15,12 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 public class Tienda {
-    @Id
+    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
     private String link_img;
+    @Id
     private String email;
     private int telefono;
     private String direccion;
@@ -26,6 +30,10 @@ public class Tienda {
     @OneToOne
     @JoinColumn(name = "vendedor_nif", referencedColumnName = "nif")
     private Vendedor vendedor;
+
+    @OneToMany(mappedBy = "tienda",cascade = CascadeType.PERSIST)
+    private List<Producto> producto;
+    
 
     public int getTelefono() {
         return this.telefono;

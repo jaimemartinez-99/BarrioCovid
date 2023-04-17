@@ -4,10 +4,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
+
 import { useState, useEffect } from "react";
 
 export default function Producto (props) {
 	const [carrito, setCarrito] = useState([]);
+	const [listaProductos, setlistaProductos] = useState([]);
+
 
   const handleAddClick = (itemName, itemPrice) => {
     const updatedCarrito = [...carrito];
@@ -25,6 +28,18 @@ export default function Producto (props) {
 		theme: "colored",
 	  });
 }
+let { email } = useParams();
+
+	useEffect(() => {
+    fetch("http://localhost:8080/producto/getAll/{email}")
+      .then((res) => res.json())
+      .then((result) => {
+        setlistaProductos(result);
+        console.log(result);
+      });
+  }, []);
+
+  
 
   useEffect(() => {
     const storedCarrito = JSON.parse(localStorage.getItem('carrito'));
@@ -33,29 +48,28 @@ export default function Producto (props) {
     }
   }, []);
 
-    let { productId } = useParams();
+    
 	return (<div id="titulo">
 			<p>
-		<b><img className="logoTienda"src={props.theproducts[productId].thumbnail} alt="imagen"></img> </b> 
 		</p> 
 		<div id="tituloTienda">
 		<p>
-		<b> {props.theproducts[productId].title} </b>
 		</p> 
 		<p>
-		<b> {props.theproducts[productId].description} </b> 
+		</p>
+		<p>
 		</p> 
 		</div>
 		<div id="productosresultados">
     		<ul id="lista">
-    			{props.theproducts[productId].images.map(item => (
+    			{listaProductos.map(item => (
       				<li key={item.id} className="unproducto">
-        				<img className="fotos" src={item[0]}></img>
+        				<img className="fotos" src={item.link_img}></img>
 						<div className="textoProductos">
-						<p> {item[1]}</p>
-						<p> {item[2]}€/kg</p>
+						<p> {item.nombre}</p>
+						<p> {item.precio}€/kg</p>
 						</div>
-        				{localStorage.getItem("nombre") && <button className="botonAñadir" onClick={() => handleAddClick(item[1], item[2])}>Añadir</button> }				
+        				{localStorage.getItem("nombre") && <button className="botonAñadir" onClick={() => handleAddClick(item.nombre, item.precio)}>Añadir</button> }				
       </li>
     ))}
   </ul>

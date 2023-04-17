@@ -32,8 +32,8 @@ function App() {
      <Route path="/" element={<Inicio/>}/>
      <Route path="InicioSesion" element={<InicioSesion/>}/>
      <Route path="Registro" element={<Registro/>}/>
-     <Route path="/Tiendas" element={<SearchPage theproducts={theproducts}/>}/>
-     <Route path="/products/:productId" element={<Producto theproducts={theproducts}/>}/>
+     <Route path="/Tiendas" element={<SearchPage/>}/>
+     <Route path="/products/:email" element={<Producto/>}/>
      <Route path="*" element={<NoMatch/>}/>
      <Route path="/Perfil" element={<Perfil/>}/>
      <Route path="/Carrito" element={<Carrito/>}/>
