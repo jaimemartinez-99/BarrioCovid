@@ -9,45 +9,77 @@ import { useState, useEffect } from "react";
 
 export default function Producto (props) {
 	const [carrito, setCarrito] = useState([]);
+	const [precioTotal, setPrecioTotal] = useState(0);
+	const [tienda, setTienda] = useState("");
+	//const [carritoPescaderia1, setCarritoPescaderia1] = useState([]);
+	//const [carritoPescaderia2, setCarritoPescaderia2] = useState([]);
+	//const [carritoDrogueria, setCarritoDrogueria] = useState([]);
+
 	const [listaProductos, setlistaProductos] = useState([]);
+
     let pathname = window.location.pathname;
 	let new_pathname = pathname.substring(1);	
 
-  const handleAddClick = (itemName, itemPrice) => {
-    const updatedCarrito = [...carrito];
-    updatedCarrito.push({ itemName, itemPrice });
-    setCarrito(updatedCarrito);
-    localStorage.setItem('carrito', JSON.stringify(updatedCarrito));
-    toast.success("Producto añadido", {
-		position: "top-center",
-		autoClose: 5000,
-		hideProgressBar: false,
-		closeOnClick: true,
-		pauseOnHover: true,
-		draggable: true,
-		progress: undefined,
-		theme: "colored",
-	  });
-}
 	useEffect(() => {
-    fetch(`http://localhost:8080/producto/getAll/${new_pathname}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setlistaProductos(result);
-        console.log(result);
-      });
-  }, []);
+		fetch(`http://localhost:8080/producto/getAll/${new_pathname}`)
+		  .then((res) => res.json())
+		  .then((result) => {
+			setlistaProductos(result);
+			console.log(result);
+		  });
+	  }, []);
 
-  
+	const handleAddClick = (item) => {
+		const updatedCarrito = [...carrito];
+		updatedCarrito.push(item);
+		setCarrito(updatedCarrito);
+		setTienda(item.tienda)
+		//console.log(precioTotal);
+		//console.log(carrito);
+		toast.success("¡Producto añadido!", {
+			position: "top-center",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "colored",
+		  }); 
+	}
+	useEffect(() => {
+		setPrecioTotal(
+		  carrito.reduce((total, item) => total + item.precio, 0)
+		);
+	  }, [carrito]);
 
-  useEffect(() => {
-    const storedCarrito = JSON.parse(localStorage.getItem('carrito'));
-    if (storedCarrito) {
-      setCarrito(storedCarrito);
-    }
-  }, []);
+	const peticionPost=(e)=>{
+		e.preventDefault()
+		const precio= precioTotal;
+		const productos = carrito;
+		const pedido = {precio, tienda, productos}
+		console.log(pedido);
+		fetch("http://localhost:8080/pedido/add",{
+          method:"POST",
+          headers:{ "Content-Type":"application/json"},
+          body:JSON.stringify(pedido),
+		}).then(() => {
+			setCarrito([]);
+			setPrecioTotal(0);
+			setTienda("");
+			toast.success("¡Pedido realizado!.", {
+				position: "top-center",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+			  }); 
+		});
+	}
 
-    
 	return (<div id="titulo">
 			<p>
 		</p> 
@@ -68,13 +100,18 @@ export default function Producto (props) {
 						<p> {item.nombre}</p>
 						<p> {item.precio}€/kg</p>
 						</div>
-        				{localStorage.getItem("nombre") && <button className="botonAñadir" onClick={() => handleAddClick(item.nombre, item.precio)}>Añadir</button> }				
+        				{localStorage.getItem("nombre") && <button className="botonAñadir" onClick={() => handleAddClick(item)}>Añadir</button> }				
       </li>
     ))}
   </ul>
   </div>
-		<Link to="/Tiendas"><button id="volver">Volver</button></Link>
+  <div id="botonesTienda">
+		<Link to="/Tiendas">		
+		<button id="volver">Volver</button>
+		</Link>
+		<button onClick={peticionPost}id="finalizar">Finalizar compra</button>
 		<ToastContainer />
-	</div>)
+		</div>
+	</div>);
+	 
 }
-

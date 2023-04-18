@@ -1,28 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap");
-
-.textoProductos {
-  font-weight: bold;
-  font-size: 20px;
-}
-.botonAñadir:hover {
-  background: #ffab91;
-}
-.logoTienda {
-  height: 200px;
-  width: 200px;
-}
 .fotos {
   height: 300px;
   width: 280px;
 }
 
-#productosresultados {
-  font-family: "Libre Caslon Text", serif;
-}
-
-#tituloTienda {
-  font-size: 20px;
-}
 
 #volver {
   position: relative;
@@ -45,26 +26,17 @@
   color: #ff8a66;
   border-bottom: 3px solid #ffab91;
 }
+
 #inputs{
-  justify-content: space-between;
-  margin-top: 20px;
+  display:block;
+}
+#input1{
+  margin-top: 10px;
+  width:220px;
 }
 
+#boton1{
+  margin-top: 10px;
+  width:120px;
 
-#cambiar{
-  position: relative;
-  width: 100px;
-  margin-left: 20px;
-  height: 40px;
-  margin-top: 20px;
-  text-align: center;
-  color: #fff;
-  background: #f0c992;
-  font-size: 1em;
-  font-weight: bold;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  transition: 0.2s ease-in;
-  cursor: pointer;
 }

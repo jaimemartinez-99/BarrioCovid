@@ -77,10 +77,13 @@ export default function Producto (props) {
   </ul>
   <p><b>¿Desea añadir algún producto?</b></p>
   <div id="inputs">
-  <input id="nombreproducto" value={nombre} onChange={(event) => setNombre(event.target.value)} placeholder="Introduzca el nombre de su producto..."></input>
-  <input id="precioproducto" value={precio} onChange={(event) => setPrecio(event.target.value)} placeholder="Introduzca el precio de su producto..."></input>
-  <input id="linkproducto" value={link_img} onChange={(event) => setlink_img(event.target.value)} placeholder="Introduzca la imagen de su producto..."></input>
-  <button id="añadirproducto" onClick={handleClick}	>Añadir producto</button>
+  <input id="input1" value={nombre} onChange={(event) => setNombre(event.target.value)} placeholder="Introduzca el nombre de su producto..."></input>
+  <br />
+  <input id="input1" value={precio} onChange={(event) => setPrecio(event.target.value)} placeholder="Introduzca el precio de su producto..."></input>
+  <br />
+  <input id="input1" value={link_img} onChange={(event) => setlink_img(event.target.value)} placeholder="Introduzca la imagen de su producto..."></input>
+  <br />
+  <button id="boton1" onClick={handleClick}	>Añadir producto</button>
   </div>
   </div>
 		<Link to="/Tiendas"><button id="volver">Volver</button></Link>
