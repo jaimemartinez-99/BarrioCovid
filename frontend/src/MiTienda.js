@@ -18,6 +18,7 @@ export default function MiTienda (props) {
 return(
 <div id="pagina">
 <p><b>{tienda.nombre}</b></p>
+<p><b>{tienda.direccion}</b></p>
 <p><b>{tienda.telefono}</b></p>
   <img className="fototienda" src={tienda.link_img}></img>
         <Link to={`/${tienda.email}/stock`}>
