@@ -36,4 +36,9 @@ public class PedidoController {
     public List<Pedido> getAllPedidosByEmail(@PathVariable String email){
         return PedidoService.getAllPedidosByEmail(email);
     }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getAll/nif/{nif}")
+    public List<Pedido> getAllPedidosByNif(@PathVariable int nif){
+        return PedidoService.getAllPedidosByNif(nif);
+    }
 }

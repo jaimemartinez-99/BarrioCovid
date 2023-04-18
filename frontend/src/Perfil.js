@@ -34,6 +34,9 @@ export default function Perfil(props) {
     localStorage.removeItem("voluntario");
     localStorage.removeItem("nif");
     localStorage.removeItem("id");
+    localStorage.removeItem("usuario");
+    localStorage.removeItem("tRecogida");
+
   };
 
   return (

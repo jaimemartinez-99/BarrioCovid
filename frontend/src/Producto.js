@@ -57,7 +57,8 @@ export default function Producto (props) {
 		e.preventDefault()
 		const precio= precioTotal;
 		const productos = carrito;
-		const pedido = {precio, tienda, productos}
+		const usuario = JSON.parse(localStorage.getItem('usuario'));
+		const pedido = {precio, tienda, productos, usuario};
 		console.log(pedido);
 		fetch("http://localhost:8080/pedido/add",{
           method:"POST",

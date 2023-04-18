@@ -1,13 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap");
 
-.carrito {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#textoTotal {
-  font-weight: bold;
+main{
+  display: block;
 }
 
 .procPedido {
@@ -57,6 +51,10 @@
 
 #botoncitos {
   justify-content: space-between;
+}
+
+#preciofinal{
+  font-size: 1.5rem;
 }
 
 ul {

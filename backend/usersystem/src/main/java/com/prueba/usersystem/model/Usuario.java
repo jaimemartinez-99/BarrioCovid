@@ -1,6 +1,13 @@
 package com.prueba.usersystem.model;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +24,18 @@ public class Usuario {
     private String pass;
     private int telefono;
     private boolean voluntario;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.PERSIST)
+    private List<Pedido> pedidos;
+
+    public List<Pedido> getPedidos() {
+        return this.pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 
     public Usuario() {
     }

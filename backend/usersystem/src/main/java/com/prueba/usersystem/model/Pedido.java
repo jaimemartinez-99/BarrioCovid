@@ -18,6 +18,10 @@ public class Pedido{
     private int id;
     private int precio;
 
+    @ManyToOne
+    @JoinColumn(name = "Usuario", referencedColumnName = "nif")
+    private Usuario usuario;
+
     
     @ManyToMany
     private List<Producto> productos;
@@ -57,7 +61,14 @@ public class Pedido{
     public void setTienda(Tienda tienda) {
         this.tienda = tienda;
     }
+    
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     public Pedido() {
     }
 }

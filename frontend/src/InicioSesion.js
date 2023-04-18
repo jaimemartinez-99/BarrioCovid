@@ -51,6 +51,7 @@ export default function InicioSesion(props) {
         localStorage.setItem('telefono', telefono);  
         localStorage.setItem('voluntario', voluntario); 
         localStorage.setItem('id', id);
+        localStorage.setItem('usuario', JSON.stringify(usuario));
         setTimeout(() => {
             window.location.reload();
           }, 2000);  

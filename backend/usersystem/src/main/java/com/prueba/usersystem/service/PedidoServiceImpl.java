@@ -28,4 +28,9 @@ public class PedidoServiceImpl implements PedidoService {
         return PedidoRepository.findByEmail(email);
     } 
 
+    @Override
+    public List<Pedido> getAllPedidosByNif(int nif){
+        return PedidoRepository.findByNif(nif);
+    } 
+
 }

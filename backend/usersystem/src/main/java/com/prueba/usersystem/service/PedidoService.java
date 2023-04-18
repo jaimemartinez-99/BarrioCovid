@@ -9,5 +9,6 @@ public interface PedidoService {
     public Pedido savePedido (Pedido Pedido);
     public List<Pedido> getAllPedidos();
     public List<Pedido> getAllPedidosByEmail(String email);
+    public List<Pedido> getAllPedidosByNif(int nif);
 
 }

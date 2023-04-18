@@ -5,108 +5,55 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Carrito() {
-  const [carrito, setCarrito] = useState([]);
-  const [mostrarAlerta, setMostrarAlerta] = useState(false);
+  const [carritoFinal, setCarritoFinal] = useState([]);
+ // const [mostrarAlerta, setMostrarAlerta] = useState(false);
   const [tRecogida, setTRecogida] = useState(null);
   const [estaMarcado,setEstaMarcado] = useState(false);
+  const [precioFinal, setPrecioFinal] = useState(0);
+  const user = JSON.parse(localStorage.getItem("usuario"));
+  console.log(user.nif);
   
-
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("carrito")) || [];
-    setCarrito(items);
+    fetch(`http://localhost:8080/pedido/getAll/nif/${user.nif}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setCarritoFinal(result);
+        console.log(result);
+      });
   }, []);
 
-  const vaciarCarrito = () => {
-    setCarrito([]);
-    localStorage.removeItem("carrito");
-    localStorage.removeItem("tRecogida");
-
-  };
-
-  const procesarPedido = () => {
-    if (JSON.parse(localStorage.getItem("carrito"))) {
-      const tRecogida = Math.floor(Math.random() * (15 - 7 + 1) + 7);
-      localStorage.setItem("tRecogida", JSON.stringify(tRecogida));
-      setTRecogida(tRecogida);
-      setMostrarAlerta(true);
-      toast.warn("Su pedido ha sido procesado, por favor espere " + tRecogida + ' minutos', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    } else {
-      toast.warn("Su carrito está vacío.", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    }
-  };
-
   useEffect(() => {
-    let alertTimeout;
-    if (mostrarAlerta && tRecogida !== null) {
-      alertTimeout = setTimeout(() => {
-        estaMarcado ? 
-        toast.success("Su pedido está listo, puede pasar a recogerlo.", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        }):
-        toast.success("Se va a efectuar la entrega de su pedido.", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        }); 
-        setMostrarAlerta(false);
-      }, 7000);
-    }
-    return () => {
-      clearTimeout(alertTimeout);
-    };
-  }, [mostrarAlerta, tRecogida]);
+		setPrecioFinal(
+		  carritoFinal.reduce((total, item) => total + item.precio, 0)
+		);
+	  }, [carritoFinal]);
+
+  const procPedido = () => {
+    setTRecogida(Math.floor(Math.random() * (15 - 7 + 1) + 7));
+    localStorage.setItem("tRecogida", tRecogida);
+  }
+
+  const vaciarCarrito = () => {
+    setCarritoFinal([]);
+  }
 
   return (
     localStorage.getItem("nombre") ? 
-    <><div id="carrito">
+    <main>
         <h2> Carrito de compras</h2>
         <div id="listaCarro">
           <ul>
-            {carrito.map((item, index) => (
+            {carritoFinal.map((item, index) => (
               <li key={index}>
-                <p>{item.itemName}</p>
-                <p>{item.itemPrice}€</p>
-              </li>
+                {item.productos.map((item1, index) => (
+                  <li key={index}>
+                  <p>{item1.nombre}: {item1.precio}€</p>
+                  </li>
+                  ))}
+                <p><b>Recibo total de {item.tienda.nombre}: {item.precio}€</b></p>
+              </li>   
             ))}
-            <li>
-              <p id="textoTotal">
-                Total:{" "}
-                {carrito
-                  .reduce((total, item) => total + item.itemPrice, 0)
-                  .toFixed(2)}
-                €
-              </p>
-            </li>
+            <p id="preciofinal"><b> Precio final: {precioFinal}€</b></p>
             <div id="confinado">
               <input type="checkbox" className="checkbox" checked={!estaMarcado} onChange={() => setEstaMarcado(!estaMarcado)} />
               <span id="span"> ¿Se encuentra confinado?</span>
@@ -115,7 +62,7 @@ export default function Carrito() {
               <button className="vaciarCarrito" onClick={vaciarCarrito}>
                 Vaciar carrito
               </button>
-              <button className="procPedido" onClick={procesarPedido}>
+              <button className="procPedido" onClick={procPedido}>
                 Procesar pedido
               </button>
             </div>
@@ -123,9 +70,7 @@ export default function Carrito() {
 
         </div>
         <ToastContainer />
-      </div> 
-      
-        </>
+      </main> 
         :
         <Link to="/">
           <button id="volverInicio"> Volver a inicio </button>
