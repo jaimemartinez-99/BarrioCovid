@@ -33,6 +33,9 @@ public class Tienda {
 
     @OneToMany(mappedBy = "tienda",cascade = CascadeType.PERSIST)
     private List<Producto> producto;
+
+    @OneToMany(mappedBy="tienda",cascade = CascadeType.PERSIST)
+    private List<Pedido> pedidos;
     
 
     public int getTelefono() {

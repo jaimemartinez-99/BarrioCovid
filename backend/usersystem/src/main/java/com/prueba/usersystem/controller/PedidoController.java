@@ -4,8 +4,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.prueba.usersystem.model.Producto;
-import com.prueba.usersystem.service.ProductoService;
+import com.prueba.usersystem.model.Pedido;
+import com.prueba.usersystem.service.PedidoService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,27 +15,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/producto")
+@RequestMapping("/pedido")
 @CrossOrigin
-public class ProductoController {
+public class PedidoController {
     @Autowired
-    private ProductoService ProductoService;
+    private PedidoService PedidoService;
     @PostMapping("/add")
-    public String add(@RequestBody Producto Producto){
-        ProductoService.saveProducto(Producto);
-        return "New Producto is added";
+    public String add(@RequestBody Pedido Pedido){
+        PedidoService.savePedido(Pedido);
+        return "New Pedido is added";
         
     }
 
     @GetMapping("/getAll")
-    public List<Producto> getAllProductos(){
-        return ProductoService.getAllProductos();
+    public List<Pedido> getAllPedidos(){
+        return PedidoService.getAllPedidos();
     }
 
     @GetMapping("/getAll/{email}")
-    public List<Producto> getAllProductosByEmail(@PathVariable String email){
-        return ProductoService.getAllProductosByEmail(email);
+    public List<Pedido> getAllPedidosByEmail(@PathVariable String email){
+        return PedidoService.getAllPedidosByEmail(email);
     }
-   
-    
 }

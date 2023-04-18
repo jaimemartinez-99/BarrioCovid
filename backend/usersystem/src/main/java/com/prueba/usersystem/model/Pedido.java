@@ -11,35 +11,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
-
 @Entity
-public class Producto {
+public class Pedido{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private String nombre;
     private int precio;
-    private String link_img;
 
+    
+    @ManyToMany
+    private List<Producto> productos;
+    
     @ManyToOne
     @JoinColumn(name = "Tienda", referencedColumnName = "email")
     private Tienda tienda;
-
-    @ManyToMany
-    private List<Pedido> pedidos;
-
-    public List<Pedido> getPedidos() {
-        return this.pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    public Producto() {
-    }
-
 
     public int getId() {
         return this.id;
@@ -47,14 +32,6 @@ public class Producto {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getPrecio() {
@@ -65,12 +42,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public String getLink_img() {
-        return this.link_img;
+    public List<Producto> getProductos() {
+        return this.productos;
     }
 
-    public void setLink_img(String link_img) {
-        this.link_img = link_img;
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 
     public Tienda getTienda() {
@@ -80,5 +57,7 @@ public class Producto {
     public void setTienda(Tienda tienda) {
         this.tienda = tienda;
     }
-    
+
+    public Pedido() {
+    }
 }
