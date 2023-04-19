@@ -18,7 +18,4 @@ public interface PedidoRepository extends JpaRepository<Pedido,Integer> {
 
     @Query("SELECT p FROM Pedido p WHERE p.usuario.nif = :nif")
     List<Pedido> findByNif(@Param("nif") int nif);
-
-    @Query("SELECT p FROM Pedido p WHERE p.usuario.nif = :nif")
-    List<Pedido> borrarPorNif(@Param("nif") int nif);
 }

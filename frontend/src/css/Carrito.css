@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap");
-
-main{
-  display: block;
+#mapeo{
+  font-family: "Libre Caslon Text", serif;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  margin-right: 25px; 
 }
-
 .procPedido {
   position: relative;
   width: 150px;

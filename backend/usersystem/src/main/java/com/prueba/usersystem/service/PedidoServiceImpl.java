@@ -34,7 +34,7 @@ public class PedidoServiceImpl implements PedidoService {
     }
     @Override
     public String borrarPedidoPorNif(int nif){
-         PedidoRepository.deleteAll( PedidoRepository.findByNif(nif));
+         PedidoRepository.deleteAll(PedidoRepository.findByNif(nif));
          return "hola";
     }
 

@@ -37,7 +37,7 @@ export default function Producto (props) {
 		//console.log(precioTotal);
 		//console.log(carrito);
 		toast.success("¡Producto añadido!", {
-			position: "top-center",
+			position: "top-right",
 			autoClose: 5000,
 			hideProgressBar: false,
 			closeOnClick: true,
@@ -68,8 +68,8 @@ export default function Producto (props) {
 			setCarrito([]);
 			setPrecioTotal(0);
 			setTienda("");
-			toast.success("¡Pedido realizado!.", {
-				position: "top-center",
+			toast.success("¡Pedido realizado!", {
+				position: "top-right",
 				autoClose: 5000,
 				hideProgressBar: false,
 				closeOnClick: true,
