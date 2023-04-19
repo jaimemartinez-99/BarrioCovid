@@ -51,6 +51,30 @@ export default function Producto (props) {
 		  }, 3000);
 	})
   }
+  const borrarProducto = (item) => {
+	fetch(`http://localhost:8080/producto/delete/nombre/${item.nombre}`, {
+		method: "DELETE",
+	}).then(response => {
+	  if (!response.ok) {
+		throw new Error("HTTP error " + response.status);
+	  } else {
+		 toast.success("¡Se ha borrado el producto!", {
+				  position: "top-right",
+				  autoClose: 5000,
+				  hideProgressBar: false,
+				  closeOnClick: true,
+				  pauseOnHover: true,
+				  draggable: true,
+				  progress: undefined,
+				  theme: "colored",
+				});
+		  setTimeout(() => {
+			window.location.reload();
+		  }, 1500);
+	  }
+	})
+  }
+
 
 	return (<div id="titulo">
 			<p>
@@ -71,6 +95,7 @@ export default function Producto (props) {
 						<div className="textoProductos">
 						<p> {item.nombre}</p>
 						<p> {item.precio}€/kg</p>
+						<button id="botonborrar"onClick={() => borrarProducto(item)}>Borrar producto</button> 
 						</div>								
       				</li> 
     ))}
@@ -83,7 +108,7 @@ export default function Producto (props) {
   <br />
   <input id="input1" value={link_img} onChange={(event) => setlink_img(event.target.value)} placeholder="Introduzca la imagen de su producto..."></input>
   <br />
-  <button id="boton1" onClick={handleClick}	>Añadir producto</button>
+  <button id="boton11" onClick={handleClick}>Añadir producto</button>
   </div>
   </div>
 		<Link to="/Tiendas"><button id="volver">Volver</button></Link>

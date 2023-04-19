@@ -27,4 +27,9 @@ public class ProductoServiceImpl implements ProductoService{
     public List<Producto> getAllProductosByEmail(String email){
         return ProductoRepository.findByEmail(email);
     } 
+    @Override
+    public String borrarProductoPorNombre(String nombre){
+        ProductoRepository.delete(ProductoRepository.findByNombre(nombre));
+        return "Producto borrado";
+    } 
 }

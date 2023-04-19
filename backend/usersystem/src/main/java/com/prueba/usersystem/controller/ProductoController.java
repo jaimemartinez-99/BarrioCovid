@@ -8,6 +8,7 @@ import com.prueba.usersystem.model.Producto;
 import com.prueba.usersystem.service.ProductoService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,10 @@ public class ProductoController {
     public List<Producto> getAllProductosByEmail(@PathVariable String email){
         return ProductoService.getAllProductosByEmail(email);
     }
-   
+    @DeleteMapping("/delete/nombre/{nombre}")
+    public String borrarProductoPorNombre(@PathVariable String nombre){
+         ProductoService.borrarProductoPorNombre(nombre);
+         return "Producto borrado";
+    }
     
 }

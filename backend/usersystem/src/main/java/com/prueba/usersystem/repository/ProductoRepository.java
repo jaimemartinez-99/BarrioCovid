@@ -12,4 +12,7 @@ import com.prueba.usersystem.model.Producto;
 public interface ProductoRepository extends JpaRepository<Producto ,Integer> {
     @Query("SELECT p FROM Producto p WHERE p.tienda.email = :email")
     List<Producto> findByEmail(@Param("email") String email);
+
+    @Query("SELECT p FROM Producto p WHERE p.nombre = :nombre")
+    Producto findByNombre(@Param("nombre") String nombre);
 }
