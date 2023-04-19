@@ -29,6 +29,9 @@ export default function Carrito() {
 	  }, [carritoFinal]);
 
   const procPedido = () => {
+    setTRecogida(Math.floor(Math.random() * (15 - 7 + 1) + 7));
+    localStorage.setItem("tRecogida", tRecogida);
+    alert("Entrega procesada correctamente. Su tiempo de espera es: " + tRecogida + ".")
     const precioTotal=precioFinal;
     const voluntario = !estaMarcado;
     const usuario = JSON.parse(localStorage.getItem("usuario"));
@@ -39,9 +42,6 @@ export default function Carrito() {
           headers:{ "Content-Type":"application/json"},
           body:JSON.stringify(entrega),
 		}).then(() => {
-    setTRecogida(Math.floor(Math.random() * (15 - 7 + 1) + 7));
-    localStorage.setItem("tRecogida", tRecogida);
-    alert("Entrega procesada correctamente. Su tiempo de espera es: " + tRecogida + ".")
   });
   }
 

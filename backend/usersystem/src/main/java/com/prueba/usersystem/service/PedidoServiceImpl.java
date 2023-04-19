@@ -31,6 +31,11 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public List<Pedido> getAllPedidosByNif(int nif){
         return PedidoRepository.findByNif(nif);
-    } 
+    }
+    @Override
+    public String borrarPedidoPorNif(int nif){
+         PedidoRepository.deleteAll( PedidoRepository.findByNif(nif));
+         return "hola";
+    }
 
 }

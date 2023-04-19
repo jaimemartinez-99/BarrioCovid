@@ -12,11 +12,13 @@ import com.prueba.usersystem.model.Pedido;
 
 
 @Repository
-public interface PedidoRepository extends JpaRepository<Pedido ,Integer> {
+public interface PedidoRepository extends JpaRepository<Pedido,Integer> {
     @Query("SELECT p FROM Pedido p WHERE p.tienda.email = :email")
     List<Pedido> findByEmail(@Param("email") String email);
 
     @Query("SELECT p FROM Pedido p WHERE p.usuario.nif = :nif")
     List<Pedido> findByNif(@Param("nif") int nif);
-    
+
+    @Query("SELECT p FROM Pedido p WHERE p.usuario.nif = :nif")
+    List<Pedido> borrarPorNif(@Param("nif") int nif);
 }
