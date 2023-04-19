@@ -4,7 +4,6 @@ package com.prueba.usersystem.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
@@ -21,7 +20,7 @@ public class Vendedor {
     private String direccion;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "vendedor", cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "vendedor", orphanRemoval = true)
     private Tienda tienda;
 
     public Tienda getTienda() {

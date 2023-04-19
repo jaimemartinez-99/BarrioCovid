@@ -2,12 +2,13 @@ package com.prueba.usersystem.model;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,14 +20,15 @@ public class Entrega {
     private int id;
 
     private int precioTotal;
+
     private boolean voluntario;
+
+    @ManyToOne
+    @JoinColumn(name = "Usuario", referencedColumnName = "direccion")
+    private Usuario usuario;
 
     @OneToMany
     private List<Pedido> pedidos;
-
-    @ManyToOne
-    @JoinColumn(name = "Usuario", referencedColumnName = "nif")
-    private Usuario usuario;
 
     public int getId() {
         return this.id;
@@ -56,6 +58,14 @@ public class Entrega {
         this.voluntario = voluntario;
     }
 
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public List<Pedido> getPedidos() {
         return this.pedidos;
     }
@@ -64,12 +74,4 @@ public class Entrega {
         this.pedidos = pedidos;
     }
 
-    public Usuario getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-    
 }

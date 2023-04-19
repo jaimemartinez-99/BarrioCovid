@@ -31,10 +31,10 @@ public class Tienda {
     @JoinColumn(name = "vendedor_nif", referencedColumnName = "nif")
     private Vendedor vendedor;
 
-    @OneToMany(mappedBy = "tienda",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "tienda",cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Producto> producto;
 
-    @OneToMany(mappedBy="tienda",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="tienda",cascade = CascadeType.REMOVE)
     private List<Pedido> pedidos;
     
 

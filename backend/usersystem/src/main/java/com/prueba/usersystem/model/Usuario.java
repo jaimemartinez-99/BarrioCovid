@@ -26,10 +26,10 @@ public class Usuario {
     private boolean voluntario;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.REMOVE)
     private List<Pedido> pedidos;
 
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.REMOVE)
     private List<Entrega> entregas;
 
     public List<Pedido> getPedidos() {
