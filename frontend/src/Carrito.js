@@ -18,7 +18,6 @@ export default function Carrito() {
       .then((res) => res.json())
       .then((result) => {
         setCarritoFinal(result);
-        
       });
   }, []);
 
@@ -27,6 +26,8 @@ export default function Carrito() {
 		  carritoFinal.reduce((total, item) => total + item.precio, 0)
 		);
 	  }, [carritoFinal]);
+
+  
 
   const procPedido = () => {
     setTRecogida(Math.floor(Math.random() * (15 - 7 + 1) + 7));
@@ -46,15 +47,36 @@ export default function Carrito() {
   }
 
   const vaciarCarrito = () => {
-    setCarritoFinal([]);
-  }
+    fetch(`http://localhost:8080/pedido/delete/nif/${user.nif}`, {
+      method: "DELETE",
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error("HTTP error " + response.status);
+    } else {
+       toast.success("¡Se ha vaciado el carrito!", {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+			  });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+    }
+  })
+}
 
   return (
     localStorage.getItem("nombre") ? 
     <main>
+      <div id="listaCarro">
         <h2> Carrito de compras</h2>
-        <div id="listaCarro">
-          <ul>
+        
+          <ul id="mapeo">
             {carritoFinal.map((item, index) => (
               <li key={index}>
                 {item.productos.map((item1, index) => (
