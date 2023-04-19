@@ -11,14 +11,14 @@ export default function Carrito() {
   const [estaMarcado,setEstaMarcado] = useState(false);
   const [precioFinal, setPrecioFinal] = useState(0);
   const user = JSON.parse(localStorage.getItem("usuario"));
-  console.log(user.nif);
+  
   
   useEffect(() => {
     fetch(`http://localhost:8080/pedido/getAll/nif/${user.nif}`)
       .then((res) => res.json())
       .then((result) => {
         setCarritoFinal(result);
-        console.log(result);
+        
       });
   }, []);
 
@@ -29,8 +29,20 @@ export default function Carrito() {
 	  }, [carritoFinal]);
 
   const procPedido = () => {
+    const precioTotal=precioFinal;
+    const voluntario = !estaMarcado;
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const pedidos = carritoFinal;
+    const entrega = {precioTotal, voluntario, usuario,pedidos }
+    fetch("http://localhost:8080/entrega/add",{
+          method:"POST",
+          headers:{ "Content-Type":"application/json"},
+          body:JSON.stringify(entrega),
+		}).then(() => {
     setTRecogida(Math.floor(Math.random() * (15 - 7 + 1) + 7));
     localStorage.setItem("tRecogida", tRecogida);
+    alert("Entrega procesada correctamente. Su tiempo de espera es: " + tRecogida + ".")
+  });
   }
 
   const vaciarCarrito = () => {
