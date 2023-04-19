@@ -29,6 +29,9 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.PERSIST)
     private List<Pedido> pedidos;
 
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.PERSIST)
+    private List<Entrega> entregas;
+
     public List<Pedido> getPedidos() {
         return this.pedidos;
     }
