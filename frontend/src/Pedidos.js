@@ -45,8 +45,9 @@ export default function Pedidos(props){
     return(
         <div>
         <div> 
+        <p><b> Mis pedidos</b></p>
         <ul id="mapeo">
-            <p><b> Mis pedidos</b></p>
+            
             {pedidos.map((item, index) => (
               <li key={index}>
                 <p>Pedido de: {item.usuario.nombre}  </p>
