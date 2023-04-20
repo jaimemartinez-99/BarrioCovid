@@ -32,8 +32,6 @@ export default function Carrito() {
 
   const procPedido = () => {
     setTRecogida(Math.floor(Math.random() * (15 - 7 + 1) + 7));
-    localStorage.setItem("tRecogida", tRecogida);
-    alert("Entrega procesada correctamente. Su tiempo de espera es: " + tRecogida + ".")
     const precioTotal=precioFinal;
     const voluntario = !estaMarcado;
     const usuario = JSON.parse(localStorage.getItem("usuario"));
@@ -47,6 +45,21 @@ export default function Carrito() {
   });
   }
 
+  useEffect(() => {
+    if (tRecogida !== null) {
+      localStorage.setItem("tRecogida", tRecogida);
+      toast.success("Entrega procesada correctamente. Su tiempo de espera son  " + tRecogida + " minutos.", {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+			  });
+    }},[tRecogida]);
+      
   const vaciarCarrito = () => {
     fetch(`http://localhost:8080/pedido/delete/nif/${user.nif}`, {
       method: "DELETE",
@@ -87,6 +100,7 @@ export default function Carrito() {
                 <p><b>Recibo total de {item.tienda.nombre}: {item.precio}€</b></p>
               </li>   
             ))}
+             </ul>
             <p id="preciofinal"><b> Precio final: {precioFinal}€</b></p>
             <div id="confinado">
               <input type="checkbox" className="checkbox" checked={!estaMarcado} onChange={() => setEstaMarcado(!estaMarcado)} />
@@ -100,7 +114,7 @@ export default function Carrito() {
                 Procesar pedido
               </button>
             </div>
-          </ul>
+         
 
         </div>
         <ToastContainer />

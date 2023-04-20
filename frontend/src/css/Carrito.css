@@ -1,10 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap");
-#mapeo{
+
+#mapeo1{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   font-family: "Libre Caslon Text", serif;
   font-size: 1.1rem;
-  margin-top: 20px;
-  margin-right: 25px; 
+  gap: 30px;
+  justify-content: center;
+  
+  
 }
+#mapeo1 li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  list-style-type: none;
+  border: 5px solid #f0c992;
+  padding: 10px;
+  background-color: #ffffff;
+  width: fit-content;
+  gap: 5px;
+  
+}
+
+#mapeo1 li li {
+  list-style-type: none;
+  border: 0px solid #f0c992;
+  padding: 10px;
+  background-color: #ffffff;
+  
+}
+
 .procPedido {
   position: relative;
   width: 150px;
@@ -56,10 +84,6 @@
 
 #preciofinal{
   font-size: 1.5rem;
-}
-
-ul {
-  list-style-type: none;
 }
 
 #span{

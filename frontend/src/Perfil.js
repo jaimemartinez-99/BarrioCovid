@@ -105,8 +105,8 @@ export default function Perfil(props) {
          entrega.map((item, index) => (
           <li key={index} className="unproducto">
           <p id="negrita"> Dirección usuario: {item.usuario.direccion}</p>
-          <p id="negrita"> Precio total:  {item.precioTotal} </p>
-          {item.voluntario ? <p className="mensaje">Te llegará la entrega a las 9</p> : <p> Podrá pasar a recoger la entrega a las 9</p> }
+          <p id="negrita"> Precio total:  {item.precioTotal}€ </p>
+          {item.voluntario ? <p className="mensaje">Te llegará la entrega en {tRecogida} minutos </p> : <p> Podrá pasar a recoger la entrega en {localStorage.getItem("ahora")} minutos </p> }
           <button id="borrarEntrega1" onClick={() => borrarEntrega(item)}> Entrega finalizada</button>
           </li>
         ))} 
@@ -118,9 +118,14 @@ export default function Perfil(props) {
            {entregasVoluntario.map((item, index) => (
             item.usuario.nombre!==user.nombre ?  (
              <li key={index} className="unproducto">
+              {item.pedidos.map((item1, index) => (
+                  <li key={index}>
+                  <p>Pedido {index+1}: {item1.tienda.nombre}</p>
+                  </li>
+                  ))}
                <p id="negrita"> Dirección usuario: {item.usuario.direccion}</p>
                <p id="negrita"> Nombre usuario: {item.usuario.nombre}</p>
-               <button id="borrarEntrega1" onClick={() => borrarEntrega(item)}> Entrega finalizada</button>
+               <button id="borrarEntrega1" onClick={() => borrarEntrega(item)}>Entrega finalizada</button>
              </li> ) : null 
            ))} 
          </ul>
@@ -131,15 +136,6 @@ export default function Perfil(props) {
           Cerrar sesión
         </button>
       </Link>
-      {tRecogida && (
-        <>
-          <p id="textoRecogida">
-            {" "}
-            Recuerde que puede pasar a recoger su pedido a las{" "}
-            {ahora?.toLocaleTimeString()}.
-          </p>
-        </>
-      )}
       <ToastContainer />
     </div> 
   );
