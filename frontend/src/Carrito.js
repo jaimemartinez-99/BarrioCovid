@@ -76,7 +76,6 @@ export default function Carrito() {
     <main>
       <div id="listaCarro">
         <h2> Carrito de compras</h2>
-        
           <ul id="mapeo">
             {carritoFinal.map((item, index) => (
               <li key={index}>

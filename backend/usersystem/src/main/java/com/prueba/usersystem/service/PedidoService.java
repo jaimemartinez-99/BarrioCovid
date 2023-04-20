@@ -11,4 +11,6 @@ public interface PedidoService {
     public List<Pedido> getAllPedidosByEmail(String email);
     public List<Pedido> getAllPedidosByNif(int nif);
     public String borrarPedidoPorNif (int nif);
+    public String borrarPedidoPorId (int id);
+
 }

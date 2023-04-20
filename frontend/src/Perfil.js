@@ -42,6 +42,8 @@ export default function Perfil(props) {
     localStorage.removeItem("nif");
     localStorage.removeItem("id");
     localStorage.removeItem("usuario");
+    localStorage.removeItem("tienda");
+
   };
   
   // Hace petición GET para recibir todas las entregas con el mismo NIF
@@ -74,7 +76,7 @@ export default function Perfil(props) {
     if (!response.ok) {
       throw new Error("HTTP error " + response.status);
     } else {
-       toast.success("¡Entrega terminada! Gracias por usar BarrioCovid!", {
+       toast.success("¡Entrega terminada! ¡Gracias por usar BarrioCovid!", {
 				position: "top-right",
 				autoClose: 5000,
 				hideProgressBar: false,

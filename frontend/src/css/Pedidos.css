@@ -1,0 +1,21 @@
+#mapeo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+#mapeo li {
+  list-style-type: none;
+  border: 5px solid #f0c992;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+#mapeo li li {
+  list-style-type: none;
+  border: 2px solid #f0c992;
+  padding: 10px;
+  background-color: #ffffff;
+}

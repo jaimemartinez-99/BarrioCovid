@@ -37,5 +37,10 @@ public class PedidoServiceImpl implements PedidoService {
          PedidoRepository.deleteAll(PedidoRepository.findByNif(nif));
          return "hola";
     }
+    @Override
+    public String borrarPedidoPorId(int id){
+        PedidoRepository.delete(PedidoRepository.findById(id));
+        return "hola";
+   }
 
 }

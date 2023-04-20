@@ -12,6 +12,7 @@ export default function InicioSesion(props) {
     const [listaUsers,setlistaUsers] = useState([]);
     const [listaTiendas,setlistaTiendas] = useState([]);
 
+
     useEffect(() => {
       fetch("http://localhost:8080/usuario/getAll")
       .then(res=> res.json())
@@ -88,8 +89,6 @@ export default function InicioSesion(props) {
         localStorage.setItem('telefono', telefono);  
         localStorage.setItem('nif', nif);
         localStorage.setItem('usuario', JSON.stringify(usuario));
-
-
         setTimeout(() => {
             window.location.reload();
           }, 2000);
@@ -117,7 +116,9 @@ export default function InicioSesion(props) {
         <br />
         </div>
       <button className = "login2" onClick={handleLogin}>Iniciar sesión como usuario </button>
+     <Link to="/MiTienda">
       <button className = "login2" onClick={handleLoginTienda}>Iniciar sesión como tienda </button>
+      </Link> 
     <ToastContainer />
     </div>)
 }

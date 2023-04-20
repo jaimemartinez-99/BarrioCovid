@@ -4,15 +4,23 @@ import './css/MiTienda.css';
 
 export default function MiTienda (props) {
   const [tienda, setTienda] = useState([]);
+  localStorage.setItem("tienda", JSON.stringify(tienda))
 
-    useEffect(() => {
-        fetch(`http://localhost:8080/tienda/getAll/${localStorage.getItem("nif")}`)
-          .then((res) => res.json())
-          .then((result) => {
-            setTienda(result);
-            console.log(result);
-          });
-      }, []);
+  useEffect(() => {
+    const fetchTienda = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/tienda/getAll/${localStorage.getItem("nif")}`);
+        const data = await response.json();
+        setTienda(data);
+        localStorage.setItem("tienda", JSON.stringify(data));
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchTienda();
+  }, []);
 
 
 return(

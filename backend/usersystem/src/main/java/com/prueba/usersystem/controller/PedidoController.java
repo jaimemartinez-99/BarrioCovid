@@ -49,4 +49,10 @@ public class PedidoController {
          PedidoService.borrarPedidoPorNif(nif);
          return "Pedidos borrados";
     }
+
+    @DeleteMapping("/delete/id/{id}")
+    public String borrarPedidoPorId(@PathVariable int id){
+         PedidoService.borrarPedidoPorId(id);
+         return "Pedido borrado";
+    }
 }
