@@ -16,6 +16,7 @@ import Registro from './Registro.js';
 import MiTienda from './MiTienda.js';
 import Pedidos from './Pedidos.js';
 import Stock from './Stock.js';
+import NavBarTienda from './NavBarTienda.js';
 
 
 function App() {
@@ -27,7 +28,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Header />
-        <InicioScreen></InicioScreen>
+        {localStorage.getItem("id") ?
+        <InicioScreen></InicioScreen> :
+        <NavBarTienda></NavBarTienda>}
       </header>
      <Routes>
      <Route path="/" element={<Inicio/>}/>

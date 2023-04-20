@@ -11,6 +11,7 @@ export default function Carrito() {
   const [estaMarcado,setEstaMarcado] = useState(false);
   const [precioFinal, setPrecioFinal] = useState(0);
   const user = JSON.parse(localStorage.getItem("usuario"));
+  console.log(user);
   
   
   useEffect(() => {
