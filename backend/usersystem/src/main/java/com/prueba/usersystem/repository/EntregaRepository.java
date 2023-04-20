@@ -19,4 +19,10 @@ import com.prueba.usersystem.model.Entrega;
 public interface EntregaRepository extends JpaRepository<Entrega ,Integer> {
     @Query("SELECT p FROM Entrega p WHERE p.usuario.nif = :nif")
     List<Entrega> findByNif(@Param("nif") int nif);
+
+    @Query("SELECT p FROM Entrega p WHERE p.id = :id")
+    Entrega findById(@Param("id") int id);
+
+    @Query("SELECT p FROM Entrega p WHERE p.voluntario = :voluntario")
+    List<Entrega> findByVoluntario(@Param("voluntario") boolean voluntario);
 }

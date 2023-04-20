@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "./css/Perfil.css";
 import { useState, useEffect } from "react";
 
@@ -9,8 +8,12 @@ export default function Perfil(props) {
   const telefono = JSON.parse(localStorage.getItem("telefono"));
   const voluntario = JSON.parse(localStorage.getItem("voluntario"));
   const tRecogida = JSON.parse(localStorage.getItem("tRecogida"));
+  const user = JSON.parse(localStorage.getItem("usuario"));
+  
 
   const [fechaEntrega, setFechaEntrega] = useState(null);
+  const [entrega, setEntrega] = useState([]);
+  const [entregasVoluntario, setEntregasVoluntario] = useState([]);
 
   const ahora = new Date();
   const tRecogidaNum = parseInt(tRecogida);
@@ -35,20 +38,85 @@ export default function Perfil(props) {
     localStorage.removeItem("nif");
     localStorage.removeItem("id");
     localStorage.removeItem("usuario");
-    localStorage.removeItem("tRecogida");
-
   };
+  
+  useEffect(() => {
+    fetch(`http://localhost:8080/entrega/getAll/nif/${user.nif}`)
+    .then((res) => res.json())
+    .then((result) => {
+      setEntrega(result);
+      console.log(result)
+    });
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/entrega/getAll/voluntario/true`)
+    .then((res) => res.json())
+    .then((result) => {
+      setEntregasVoluntario(result);
+      console.log(result)
+    });
+  }, []);
+
+  
+   const borrarEntrega = (item) => {
+    fetch(`http://localhost:8080/entrega/delete/id/${item.id}`, {
+      method: "DELETE",
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error("HTTP error " + response.status);
+    } else {
+       toast.success("¡Se ha vaciado el carrito!", {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+			  });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+    }
+  })
+}
 
   return (
     localStorage.getItem("nombre") ? 
     <div id="perfil">
-      <>
+      
         <h3 className="mensaje">{nombre}</h3>
         <h3 className="mensaje">{direccion}</h3>
         <h3 className="mensaje">{telefono}</h3>
-        {voluntario ? <h3 className="mensaje">Soy voluntario</h3> : null }
-      </>
-
+        {}
+        <h3> Mis pedidos </h3>
+        {<ul id="lista"> 
+        {entrega.length > 0 && 
+         entrega.map((item, index) => (
+          <li key={index} className="unproducto">
+          <p id="negrita"> Dirección usuario: {item.usuario.direccion}</p>
+          <p id="negrita"> Precio total:  {item.precioTotal} </p>
+          {item.voluntario ? <p className="mensaje">Te llegará la entrega a las 9</p> : <p> Podrá pasar a recoger la entrega a las 9</p> }
+          <button onClick={() => borrarEntrega(item)}> Entrega finalizada</button>
+          </li>
+        ))} 
+        </ul> }
+        {voluntario ? (  
+         <div>
+          <h3 className="mensaje">Entregas pendientes</h3>
+         <ul id="lista">
+           {entregasVoluntario.map((item, index) => (
+             <li key={index} className="unproducto">
+               <p id="negrita"> Dirección usuario: {item.usuario.direccion}</p>
+               <p id="negrita"> Nombre usuario: {item.usuario.nombre}</p>
+               <button onClick={() => borrarEntrega(item)}> Entrega finalizada</button>
+             </li>
+           ))} 
+         </ul>
+       </div>
+     ) : null}
       <Link to="/">
         <button className="cerrarSesion" onClick={handleLogout}>
           Cerrar sesión

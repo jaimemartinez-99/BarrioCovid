@@ -7,5 +7,6 @@ public interface EntregaService {
     public Entrega saveEntrega (Entrega Entrega);
     public List<Entrega> getAllEntregas();
     public List<Entrega> getAllEntregasByNif(int nif);
-
+    public String borrarEntregaPorId (int id);
+    public List<Entrega> getAllEntregasVoluntario(boolean voluntario);
 }

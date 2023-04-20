@@ -87,6 +87,8 @@ export default function InicioSesion(props) {
         localStorage.setItem('direccion', direccion);
         localStorage.setItem('telefono', telefono);  
         localStorage.setItem('nif', nif);
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+
 
         setTimeout(() => {
             window.location.reload();

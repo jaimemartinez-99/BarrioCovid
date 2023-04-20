@@ -8,6 +8,7 @@ import com.prueba.usersystem.model.Entrega;
 import com.prueba.usersystem.service.EntregaService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,5 +36,15 @@ public class EntregaController {
     @GetMapping("/getAll/nif/{nif}")
     public List<Entrega> getAllEntregasByNif(@PathVariable int nif){
         return EntregaService.getAllEntregasByNif(nif);
+    }
+
+    @DeleteMapping("/delete/id/{id}")
+    public String borrarEntregaPorId(@PathVariable int id){
+         EntregaService.borrarEntregaPorId(id);
+         return "Entrega borrada";
+    }
+    @GetMapping("/getAll/voluntario/{voluntario}")
+    public List<Entrega> getAllEntregasByNif(@PathVariable boolean voluntario){
+        return EntregaService.getAllEntregasVoluntario(voluntario);
     }
 }

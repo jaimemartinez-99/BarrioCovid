@@ -23,7 +23,7 @@ public class Entrega {
     private boolean voluntario;
 
     @ManyToOne
-    @JoinColumn(name = "Usuario", referencedColumnName = "direccion")
+    @JoinColumn(name = "Usuario", referencedColumnName = "nif")
     private Usuario usuario;
 
     @OneToMany

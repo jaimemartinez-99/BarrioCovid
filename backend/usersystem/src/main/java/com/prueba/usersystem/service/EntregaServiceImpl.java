@@ -27,4 +27,16 @@ public class EntregaServiceImpl implements EntregaService{
     public List<Entrega> getAllEntregasByNif(int nif){
         return EntregaRepository.findByNif(nif);
     } 
+
+    @Override
+    public String borrarEntregaPorId(int id){
+         EntregaRepository.delete(EntregaRepository.findById(id));
+         return "hola";
+    }
+    @Override
+    public List<Entrega> getAllEntregasVoluntario(boolean voluntario){
+        return EntregaRepository.findByVoluntario(voluntario);
+         
+    }
+
 }
