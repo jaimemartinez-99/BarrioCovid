@@ -23,6 +23,10 @@ public class UsuarioController {
 
     @PostMapping("/add")
     public String add(@RequestBody Usuario usuario){
+        Usuario userExistente = usuarioService.findByEmail(usuario.getEmail());
+        if (userExistente != null) {
+            return "El correo electrónico ya existe";
+        }
         usuarioService.saveUsuario(usuario);
         return "New usuario is added";
     }
@@ -30,4 +34,6 @@ public class UsuarioController {
     public List<Usuario> getAllUsuarios(){
         return usuarioService.getAllUsuarios();
     }
+
+
 }

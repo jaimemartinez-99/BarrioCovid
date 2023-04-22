@@ -15,6 +15,19 @@ export default function Registro(props) {
     const [direccion, setDireccion] = useState();
     const [telefono, setTelefono] = useState();
     const [voluntario, setVoluntario] = useState(false);
+    const [listaUsers,setlistaUsers] = useState([]);
+
+    useEffect(() => {
+      fetch("http://localhost:8080/usuario/getAll")
+      .then(res=> res.json())
+      .then((result)=>{
+          setlistaUsers(result);
+          console.log(result);
+      }
+      )
+  },[])
+
+  // Creación de nuevo usuario en la base de datos. Se comprueba que todos los campos están completos y que el córreo electrónico no está ya en uso en la base de datos.
 
     const handleClick=(e)=>{
       e.preventDefault()
@@ -31,7 +44,18 @@ export default function Registro(props) {
           progress: undefined,
           theme: "colored",
         });
-      } else {
+      } else if (listaUsers.some(user => user.email === usuarioBBDD.email)) {
+        toast.error("El correo electrónico ya está en uso", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }else{
       fetch("http://localhost:8080/usuario/add",{
           method:"POST",
           headers:{ "Content-Type":"application/json"},
