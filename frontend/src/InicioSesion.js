@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 export default function InicioSesion(props) {
-  const [nifInput, setnifInput] = useState();
+  const [emailInput, setemailInput] = useState();
     const [passInput, setPassInput] = useState("");
     const [listaUsers,setlistaUsers] = useState([]);
     const [listaTiendas,setlistaTiendas] = useState([]);
@@ -34,7 +34,7 @@ export default function InicioSesion(props) {
   },[])
 
   const handleLogin = () => {
-    if (listaUsers.some(user => user.nif === nifInput && user.pass === passInput)) {
+    if (listaUsers.some(user => user.email === emailInput && user.pass === passInput)) {
         toast.success("Sesión iniciada. ¡Disfrute de BarrioCovid!", {
             position: "top-center",
             autoClose: 5000,
@@ -45,7 +45,7 @@ export default function InicioSesion(props) {
             progress: undefined,
             theme: "colored",
           });
-        const usuario = listaUsers.find(user => user.nif === nifInput);
+        const usuario = listaUsers.find(user => user.email === emailInput);
         const { nombre, direccion, telefono, voluntario, id } = usuario;
         localStorage.setItem('nombre', nombre);
         localStorage.setItem('direccion', direccion);
@@ -71,7 +71,7 @@ export default function InicioSesion(props) {
   };
   //Parte de código destinada a comprobar si el input introducido como nombre de usuario y contraseña de vendedor existen en la base de datos.
   const handleLoginTienda = () => {
-    if (listaTiendas.some(user => user.nif === nifInput && user.pass === passInput)) {
+    if (listaTiendas.some(user => user.email === emailInput && user.pass === passInput)) {
         toast.success("Sesión iniciada. ¡Disfrute de BarrioCovid!", {
             position: "top-center",
             autoClose: 5000,
@@ -82,7 +82,7 @@ export default function InicioSesion(props) {
             progress: undefined,
             theme: "colored",
           });
-        const usuario = listaTiendas.find(user => user.nif === nifInput);
+        const usuario = listaTiendas.find(user => user.email === emailInput);
         const { nombre, direccion, telefono, nif} = usuario;
         localStorage.setItem('nombre', nombre);
         localStorage.setItem('direccion', direccion);
@@ -110,9 +110,9 @@ export default function InicioSesion(props) {
     <div id="total">
       <h4 className="textoUser"> INICIE SESIÓN </h4>
         <div id="inputUser">
-        <input id="usuario" value={nifInput} onChange={(event) => setnifInput(event.target.value)} placeholder="Introduzca su DNI..."></input>
+        <input id="usuario" value={emailInput} onChange={(event) => setemailInput(event.target.value)} placeholder="Introduzca su email..."></input>
         <br />
-        <input id="pass" type="password" value={passInput} onChange={(event) => setPassInput(event.target.value)} placeholder="Introduzca contraseña..."></input>
+        <input id="pass" type="password" value={passInput} onChange={(event) => setPassInput(event.target.value)} placeholder="Introduzca su contraseña..."></input>
         <br />
         </div>
       <button className = "login2" onClick={handleLogin}>Iniciar sesión como usuario </button>
