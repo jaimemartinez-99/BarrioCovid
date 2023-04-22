@@ -114,7 +114,7 @@ export default function Perfil(props) {
         {voluntario && entregasVoluntario.length > 0 ? (  
          <div>
           <h3 className="mensaje">Entregas pendientes</h3>
-         <ul id="lista">
+         <ul id="entregas">
            {entregasVoluntario.map((item, index) => (
             item.usuario.nombre!==user.nombre ?  (
              <li key={index} className="unproducto">
