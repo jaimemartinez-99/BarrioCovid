@@ -20,4 +20,8 @@ public class VendedorServiceImpl implements VendedorService{
     public List<Vendedor> getAllVendedores(){
         return vendedorRepository.findAll();
     }
+    @Override
+    public Vendedor findByEmail(String email){
+        return vendedorRepository.findByEmail(email);
+    }
 }
