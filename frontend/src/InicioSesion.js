@@ -116,9 +116,9 @@ export default function InicioSesion(props) {
         <br />
         </div>
       <button className = "login2" onClick={handleLogin}>Iniciar sesión como usuario </button>
-     <Link to="/MiTienda">
+   
       <button className = "login2" onClick={handleLoginTienda}>Iniciar sesión como tienda </button>
-      </Link> 
+       
     <ToastContainer />
     </div>)
 }
